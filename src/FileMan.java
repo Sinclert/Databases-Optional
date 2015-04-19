@@ -28,7 +28,7 @@ public class FileMan {
     /* Reads a serial file (old design) and inserts evey record read into the new datafile
      * @param: String old_filename: full path and name of the original (old) datafile
      */
-    public String import (String old_filename) {
+    public String imports (String old_filename) {
         return("Import " + old_filename +" method finished (not implemented yet)");
     }
   
