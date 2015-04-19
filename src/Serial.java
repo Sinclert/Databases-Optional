@@ -33,9 +33,13 @@ public class Serial {
 		else{
 			throw new IOException("Wrong mode");
 		}
+<<<<<<< Updated upstream
 		
 		cnt_byte = 0;
 		readBlock();
+=======
+		cnt_byte = 0; readBlock();
+>>>>>>> Stashed changes
 	}
 	
 	
