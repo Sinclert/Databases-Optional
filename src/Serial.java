@@ -43,7 +43,7 @@ public class Serial {
 	public void closeFile() throws IOException{
 		f.close();
 	}
-	
+
 	public char read_byte() throws IOException {
 		if (cnt_byte > 1023){
 			readBlock();
