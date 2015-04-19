@@ -52,8 +52,9 @@ public class Serial {
 		byte[] block = readBlock();
 		return (char) block[++cnt_byte];
 	}
+
 	
-	/**
+    /**
      * Reads currently pointed block. Then, the following block is pointed.<br/>
      * The file must be open in read mode (either "R" or "RW").<br/>
      */
