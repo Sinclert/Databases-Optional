@@ -43,43 +43,17 @@ public class Serial {
 	public void closeFile() throws IOException{
 		f.close();
 	}
-
 	
-<<<<<<< HEAD
 	public char read_byte() throws IOException {
-=======
-	char read_byte() throws IOException {
->>>>>>> origin/master
 		if (cnt_byte > 1023){
 			readBlock();
 			cnt_byte = 0;
 		}
-		
 		byte[] block = readBlock();
-<<<<<<< HEAD
-		return (char) block[cnt_byte++];
-	}
-	
-	public string read_string(n) {
-		for (i = 0 ; i < n ; i++) {
-			read_byte();
-		}
-=======
-		/*
-		char returned = block[cnt_byte];
-		cnt_byte++;
-		return(returned);
-		*/
 		return (char) block[++cnt_byte];
->>>>>>> origin/master
-		
-		return ()
 	}
 	
-	Logical_Record read_record
-	Logical_Record.name ! read_string(50); ...and so on till all fields have been read
-	
-    /**
+	/**
      * Reads currently pointed block. Then, the following block is pointed.<br/>
      * The file must be open in read mode (either "R" or "RW").<br/>
      */
