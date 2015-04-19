@@ -10,6 +10,7 @@ public class Serial {
 	private RandomAccessFile f;
 	private long filesize;
 	public static final int BLOCKSIZE = 1024;
+	int cnt_byte;
 	
     /**     
      * Opens the file in the specified mode, pointing to first block.
@@ -32,6 +33,9 @@ public class Serial {
 		else{
 			throw new IOException("Wrong mode");
 		}
+		
+		cnt_byte = 0;
+		readBlock();
 	}
 	
 	
@@ -40,6 +44,20 @@ public class Serial {
 		f.close();
 	}
 
+	
+	char read_byte() {
+		if (cnt_byte > 1023){
+			readBlock();
+			cnt_byte = 0;
+		}
+		
+		byte[] block = readBlock();
+		char returned = block[cnt_byte];
+		cnt_byte++;
+		return(returned);
+		
+	}
+	
 	
     /**
      * Reads currently pointed block. Then, the following block is pointed.<br/>
