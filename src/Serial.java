@@ -33,13 +33,7 @@ public class Serial {
 		else{
 			throw new IOException("Wrong mode");
 		}
-<<<<<<< Updated upstream
-		
-		cnt_byte = 0;
-		readBlock();
-=======
 		cnt_byte = 0; readBlock();
->>>>>>> Stashed changes
 	}
 	
 	
@@ -49,16 +43,19 @@ public class Serial {
 	}
 
 	
-	char read_byte() {
+	char read_byte() throws IOException {
 		if (cnt_byte > 1023){
 			readBlock();
 			cnt_byte = 0;
 		}
 		
 		byte[] block = readBlock();
+		/*
 		char returned = block[cnt_byte];
 		cnt_byte++;
 		return(returned);
+		*/
+		return (char) block[++cnt_byte];
 		
 	}
 	
