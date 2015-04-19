@@ -1,5 +1,7 @@
 package src;
 
+import fileSystem.utils.LogicalRecord;
+
 import java.io.*;
 
 /**
@@ -86,8 +88,22 @@ public class Serial {
 		f.read(block);
 		return block;
 	}
-	
-	
+
+	public String read_string (int n) throws IOException {
+		String readed_string = "";
+		for (int i = 0; i < n; i++) {
+			readed_string = readed_string+read_byte();
+		}
+		return readed_string;
+	}
+
+	public LogicalRecord read_record() throws IOException {
+		LogicalRecord record = new LogicalRecord();
+
+		//Logical_Record.name <-- read_string(50); ...and so on till all fields have been read
+		return record;
+	}
+
     /**
      * Moves pointer to the beginning (points to first block).
      */
