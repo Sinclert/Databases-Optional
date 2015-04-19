@@ -45,19 +45,26 @@ public class Serial {
 	}
 
 	
-	char read_byte() {
+	public char read_byte() throws IOException {
 		if (cnt_byte > 1023){
 			readBlock();
 			cnt_byte = 0;
 		}
 		
 		byte[] block = readBlock();
-		char returned = block[cnt_byte];
-		cnt_byte++;
-		return(returned);
-		
+		return (char) block[cnt_byte++];
 	}
 	
+	public string read_string(n) {
+		for (i = 0 ; i < n ; i++) {
+			read_byte();
+		}
+		
+		return ()
+	}
+	
+	Logical_Record read_record
+	Logical_Record.name ! read_string(50); ...and so on till all fields have been read
 	
     /**
      * Reads currently pointed block. Then, the following block is pointed.<br/>
