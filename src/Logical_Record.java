@@ -1,117 +1,115 @@
 package src;
 
-import java.util.ArrayList;
-
 public class Logical_Record {
 	
-	private char [] name = new char [50];
-	private char [] caffea = new char [9];
-	private char [] varietal = new char [28];
-	private char [] origin = new char [14];
-	private char [] roasting = new char [7];
-	private char [] process = new char [7];
-	private ArrayList <char[]> barCodes = new ArrayList <char[]>();
-	private ArrayList <char[]> formats = new ArrayList <char[]>();
-	private ArrayList <char[]> price = new ArrayList <char[]>();
-	private ArrayList <byte[]> min_stock = new ArrayList <byte[]>();
-	private ArrayList <byte[]> stock = new ArrayList <byte[]>();
-	private ArrayList <byte[]> max_stock = new ArrayList <byte[]>();
+	private String name;
+	private String caffea;
+	private String varietal;
+	private String origin;
+	private String roasting;
+	private String process;
+	private String [] barCodes = new String [15];
+	private String [] formats = new String [15];
+	private String [] prices = new String [15];
+	private String [] min_stocks = new String [15];
+	private String [] stocks = new String [15];
+	private String [] max_stocks = new String [15];
 	
-
-	public char[] getName() {
+	
+	public String getName() {
 		return name;
 	}
 	
-	public void setName(char[] name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	
-	public char[] getCaffea() {
+	public String getCaffea() {
 		return caffea;
 	}
 	
-	public void setCaffea(char[] caffea) {
+	public void setCaffea(String caffea) {
 		this.caffea = caffea;
 	}
 	
-	public char[] getVarietal() {
+	public String getVarietal() {
 		return varietal;
 	}
 	
-	public void setVarietal(char[] varietal) {
+	public void setVarietal(String varietal) {
 		this.varietal = varietal;
 	}
 	
-	public char[] getOrigin() {
+	public String getOrigin() {
 		return origin;
 	}
 	
-	public void setOrigin(char[] origin) {
+	public void setOrigin(String origin) {
 		this.origin = origin;
 	}
 	
-	public char[] getRoasting() {
+	public String getRoasting() {
 		return roasting;
 	}
 	
-	public void setRoasting(char[] roasting) {
+	public void setRoasting(String roasting) {
 		this.roasting = roasting;
 	}
 	
-	public char[] getProcess() {
+	public String getProcess() {
 		return process;
 	}
 	
-	public void setProcess(char[] process) {
+	public void setProcess(String process) {
 		this.process = process;
 	}
 
-	public ArrayList<char[]> getBarCodes() {
+	public String[] getBarCodes() {
 		return barCodes;
 	}
 
-	public void setBarCodes(ArrayList<char[]> barCodes) {
-		this.barCodes = barCodes;
+	public void setBarCodes(int i, String barCode) {
+		this.barCodes[i] = barCode;
 	}
 
-	public ArrayList<char[]> getFormats() {
+	public String[] getFormats() {
 		return formats;
 	}
 
-	public void setFormats(ArrayList<char[]> formats) {
-		this.formats = formats;
+	public void setFormats(int i, String format) {
+		this.formats[i] = format;
 	}
 
-	public ArrayList<char[]> getPrice() {
-		return price;
+	public String[] getPrices() {
+		return prices;
 	}
 
-	public void setPrice(ArrayList<char[]> price) {
-		this.price = price;
+	public void setPrices(int i, String price) {
+		this.prices[i] = price;
 	}
 
-	public ArrayList<byte[]> getMin_stock() {
-		return min_stock;
+	public String[] getMin_stocks() {
+		return min_stocks;
 	}
 
-	public void setMin_stock(ArrayList<byte[]> min_stock) {
-		this.min_stock = min_stock;
+	public void setMin_stocks(int i, String min_stock) {
+		this.min_stocks[i] = min_stock;
 	}
 
-	public ArrayList<byte[]> getStock() {
-		return stock;
+	public String[] getStocks() {
+		return stocks;
 	}
 
-	public void setStock(ArrayList<byte[]> stock) {
-		this.stock = stock;
+	public void setStocks(int i, String stock) {
+		this.stocks[i] = stock;
 	}
 
-	public ArrayList<byte[]> getMax_stock() {
-		return max_stock;
+	public String[] getMax_stocks() {
+		return max_stocks;
 	}
 
-	public void setMax_stock(ArrayList<byte[]> max_stock) {
-		this.max_stock = max_stock;
+	public void setMax_stocks(int i, String max_stock) {
+		this.max_stocks[i] = max_stock;
 	}
-
+	
 }
