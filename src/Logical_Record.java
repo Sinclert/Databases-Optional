@@ -10,6 +10,7 @@ public class Logical_Record {
 	private String process;
 	private String [] barCodes = new String [15];
 	private String [] formats = new String [15];
+	private String [] packagings = new String [15];
 	private String [] prices = new String [15];
 	private String [] min_stocks = new String [15];
 	private String [] stocks = new String [15];
@@ -90,6 +91,14 @@ public class Logical_Record {
 
 	public void setFormats(int i, String format) {
 		this.formats[i] = format;
+	}
+
+	public String[] getPackagings() {
+		return packagings;
+	}
+
+	public void setPackagings(int i, String packagings) {
+		this.packagings[i] = packagings;
 	}
 
 	public String[] getPrices() {
