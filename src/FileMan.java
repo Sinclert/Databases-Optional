@@ -33,7 +33,7 @@ public class FileMan {
     }
   
 
-    /* Begins a search in the open datafile; will seek  any record matching 
+    /** Begins a search in the open datafile; will seek  any record matching
 	 *the condition stated in buf_in, and will return first match in buf_out.    
     * @param: string: Archive subject to query (IGNORE)-.
     * @param: buffer buf_out: Buffer containing the search conditions, 
