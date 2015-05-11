@@ -22,92 +22,84 @@ public class Interface {
 	
     Serial serial = new Serial();
     
-    public void input(int references_num, byte[] bytearray) throws IOException {
-    	
-    	int i = 0;
+    public void input(int references_num, byte[] byteArray) throws IOException {
+ 
+    	String input, buffer="";
     	Scanner sc = new Scanner(System.in);
     	
     	System.out.println("Introduce a name");
-    	for (i = 0 ; i < 50 ; i++) {
-    		bytearray[i] = sc.nextByte();
-    	}
+    	input = sc.nextLine();
+    	if (input.length() <= 50) buffer += input;
     	
     	System.out.println("Introduce a coffea");
-    	for (i = 0 ; i < 9 ; i++) {
-    		bytearray[i] = sc.nextByte();
-    	}
+    	input = sc.nextLine();
+    	if (input.length() <= 9) buffer += input;
     	
     	System.out.println("Introduce a varietal");
-    	for (i = 0 ; i < 28 ; i++) {
-    		bytearray[i] = sc.nextByte();
-    	}
+    	input = sc.nextLine();
+    	if (input.length() <= 28) buffer += input;
 
     	System.out.println("Introduce an origin");
-    	for (i = 0 ; i < 14 ; i++) {
-    		bytearray[i] = sc.nextByte();
-    	}
+    	input = sc.nextLine();
+    	if (input.length() <= 14) buffer += input;
 
     	System.out.println("Introduce a roasting");
-    	for (i = 0 ; i < 7 ; i++) {
-    		bytearray[i] = sc.nextByte();
-    	}
+    	input = sc.nextLine();
+    	if (input.length() <= 7) buffer += input;
 
     	System.out.println("Introduce a process");
-    	for (i = 0 ; i < 7 ; i++) {
-    		bytearray[i] = sc.nextByte();
-    	}
+    	input = sc.nextLine();
+    	if (input.length() <= 7) buffer += input;
     	
     	// Here is where the references are introduced
-    	for ( i= 0 ; i < references_num ; i++) {
+    	for (int i= 0 ; i < references_num ; i++) {
     		
     		System.out.println("Introduce a barcode");
-        	for (i = 0 ; i < 15 ; i++) {
-        		bytearray[i] = sc.nextByte();
-        	}
-
+    		input = sc.nextLine();
+        	if (input.length() <= 15) buffer += input;
+        	
         	System.out.println("Introduce a format");
-        	for (i = 0 ; i < 12 ; i++) {
-        		bytearray[i] = sc.nextByte();
-        	}
+        	input = sc.nextLine();
+        	if (input.length() <= 12) buffer += input;
 
         	System.out.println("Introduce a packaging");
-        	for (i = 0 ; i < 15 ; i++) {
-        		bytearray[i] = sc.nextByte();
-        	}
+        	input = sc.nextLine();
+        	if (input.length() <= 15) buffer += input;
 
         	System.out.println("Introduce a price");
-        	for (i = 0 ; i < 11 ; i++) {
-        		bytearray[i] = sc.nextByte();
-        	}
+        	input = sc.nextLine();
+        	if (input.length() <= 11) buffer += input;
         	
         	System.out.println("Introduce a minimum stock");
-        	for (i = 0 ; i < 3 ; i++) {
-        		bytearray[i] = sc.nextByte();
-        	}
+        	input = sc.nextLine();
+        	if (input.length() <= 3) buffer += input;
         	
         	System.out.println("Introduce a stock");
-        	for (i = 0 ; i < 4 ; i++) {
-        		bytearray[i] = sc.nextByte();
-        	}
+        	input = sc.nextLine();
+        	if (input.length() <= 4) buffer += input;
         	
         	System.out.println("Introduce a maximum stock");
-        	for (i = 0 ; i < 4 ; i++) {
-        		bytearray[i] = sc.nextByte();
-        	}
+        	input = sc.nextLine();
+        	if (input.length() <= 4) buffer += input;
     	}
     	
-        serial.writeBlock(bytearray);
+    	byteArray = buffer.getBytes();
+        serial.writeBlock(byteArray);
         sc.close();
     }
 
     public void output() throws IOException {
         System.out.println(serial.read_record());
     }
+    
+    public void output(Logical_Record record) throws IOException {
+        System.out.println(record.toString());
+    }
 
     public void iface() throws IOException{
     	
     	int references_num = 1;
-    	boolean exit = false, stop = false, valid_number;
+    	boolean exit = false, stop = false;
     	String name = "", caffea = "", varietal = "", origin = "", roasting = "", process = "";
     	Scanner sc = new Scanner(System.in);
     	
@@ -133,12 +125,12 @@ public class Interface {
                 // Case in which we insert a record
                 case 2:
                 	
-                	valid_number = false;
+                	boolean valid_number = false;
                 	System.out.println("Process to introduce a new record:");
-                	while (valid_number == false) {
+                	while (!valid_number) {
                 		System.out.println("How many references do you want to introduce for this record?");
                 		references_num = sc.nextInt();
-                		if (references_num > 1 && references_num < 15) {
+                		if (references_num > 0 && references_num < 16) {
                 			valid_number = true;
                 		}
                 	}

@@ -2,10 +2,8 @@ package src;
 
 import fileSystem.utils.Buffer;
 import fileSystem.utils.LogicalRecord;
-
 import java.io.*;
 
-import com.sun.corba.se.impl.ior.ByteBuffer;
 
 /**
  * Serial Driver, representing a serial device.
@@ -47,16 +45,6 @@ public class Serial {
 		f.close();
 	}
 
-	public char read_byte() throws IOException {
-		if (cnt_byte > 1023){
-			readBlock();
-			cnt_byte = 0;
-		}
-		byte[] block = readBlock();
-		return (char) block[++cnt_byte];
-	}
-
-	
     /**
      * Reads currently pointed block. Then, the following block is pointed.<br/>
      * The file must be open in read mode (either "R" or "RW").<br/>
@@ -78,6 +66,15 @@ public class Serial {
 		return readed_string;
 	}
 	
+	public char read_byte() throws IOException {
+		if (cnt_byte > 1023){
+			readBlock();
+			cnt_byte = 0;
+		}
+		byte[] block = readBlock();
+		return (char) block[++cnt_byte];
+	}
+	
 	/**
 	 * Method used to read the records from the old file
 	 */
@@ -92,38 +89,15 @@ public class Serial {
 		record.setRoasting(read_string(7));
 		record.setProcess(read_string(7));
 		
-		/*
-		record.setField("name", read_string(50));
-		record.setField("caffea", read_string(9));
-		record.setField("varietal", read_string(28));
-		record.setField("origin", read_string(14));
-		record.setField("roasting", read_string(7));
-		record.setField("process", read_string(7));
-		 */
-		
-		for (i = 0 ; i < 15 ; i++) {
-			record.setBarCodes(i, read_string(15));
-		}
-		
-		for (i = 0 ; i < 15 ; i++) {
-			record.setFormats(i, read_string(12));
-		}
-		
-		for (i = 0 ; i < 15 ; i++) {
-			record.setPrices(i, read_string(15));
-		}
-		
-		for (i = 0 ; i < 15 ; i++) {
-			record.setMin_stocks(i, read_string(3));
-		}
-		
-		for (i = 0 ; i < 15 ; i++) {
-			record.setStocks(i, read_string(4));
-		}
-		for (i = 0 ; i < 15 ; i++) {
-			record.setMax_stocks(i, read_string(4));
-		}
-		
+		for (int i = 115, j = 0; i<911; i = i+53, j++) {
+			if(f.readLine().toCharArray()[i]==' ') break;
+			record.setBarCodes(j, read_string(15));
+			record.setFormats(j, read_string(12));
+			record.setPrices(j, read_string(15));
+			record.setMin_stocks(j, read_string(3));
+			record.setStocks(j, read_string(4));
+			record.setMax_stocks(j, read_string(4));
+		}		
 		return record;
 	}
 
