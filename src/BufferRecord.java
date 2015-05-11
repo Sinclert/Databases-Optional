@@ -1,5 +1,5 @@
 package src;
 
-public class BufferRecord {
+public class BufferRecord extends Logical_Record{
 
 }

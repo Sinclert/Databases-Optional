@@ -25,7 +25,7 @@ public class Interface {
     FileMan fileman = new FileMan();
     
     public Logical_Record input(int references_num, Logical_Record record) throws IOException {
- 
+
     	String input;
     	Scanner sc = new Scanner(System.in);
     	
@@ -90,7 +90,7 @@ public class Interface {
     }
 
     public void output() throws IOException {
-        System.out.println(serial.read_record());
+        System.out.println(serial.read_record().toString());
     }
     
     public void output(Logical_Record record) throws IOException {
@@ -120,7 +120,7 @@ public class Interface {
             
             	// Case in which we open a file
                 case 1:
-                	serial.openFile("Coffea", "R");
+                	fileman.open_archive("newCoffea");
                     break;
                 
                 // Case in which we insert a record
@@ -156,79 +156,65 @@ public class Interface {
                 	
                 // Case in which we search a record
                 case 4:
-                	
+                	BufferRecord buf_in = new BufferRecord();
+
                 	System.out.println("Introducing a record to be found:");
                 	System.out.println("Introduce a name");
                 	if (sc.hasNext()) {
-                		name = sc.next();
+                		buf_in.setName(sc.nextLine());
                 	}
                 	
                 	System.out.println("Introduce a caffea");
                 	if (sc.hasNext()) {
-                		caffea = sc.next();
+                        buf_in.setCaffea(sc.nextLine());
                 	}
                 	
                 	System.out.println("Introduce a varietal");
                 	if (sc.hasNext()) {
-                		varietal = sc.next();
+                        buf_in.setVarietal(sc.nextLine());
                 	}
 
                 	System.out.println("Introduce a origin");
                 	if (sc.hasNext()) {
-                		origin = sc.next();
+                        buf_in.setOrigin(sc.nextLine());
                 	}
 
                 	System.out.println("Introduce a roasting");
                 	if (sc.hasNext()) {
-                		roasting = sc.next();
+                        buf_in.setRoasting(sc.nextLine());
                 	}
 
                 	System.out.println("Introduce a process");
                 	if (sc.hasNext()) {
-                		process = sc.next();
+                        buf_in.setProcess(sc.nextLine());
                 	}
-                	
-                	// TODO problema con los records que buscamos dejando espacios en blanco
-                	while (!stop) {
-                		/*
-                        if (fileman.search().getName().equals(name) &&
-                				fileman.read_record().getCaffea().equals(caffea) &&
-                				fileman.read_record().getVarietal().equals(varietal) &&
-                				fileman.read_record().getOrigin().equals(origin) &&
-                				fileman.read_record().getRoasting() == roasting &&
-                				fileman.read_record().getProcess() == process) {
-                			output();
-                			stop = true;
-                		}
-                		*/
-                		
-                		// if (EOF == true) {
-            				// System.out.println("There are no records fulfilling those conditions");
-                		// }
-                	}
-                	
+                    BufferRecord buf_out = fileman.search("Coffea", buf_in, buf_out = new BufferRecord());
+
                 	System.out.println("Do you want to see the next record?");
                     break;
                     
                 // Case in which we search the next record
                 case 5:
-                	
-                	stop = false;
-                	while (!stop) {
-                		if (serial.read_record().getName() == name && 
-                				serial.read_record().getCaffea() == caffea && 
-                				serial.read_record().getVarietal() == varietal && 
-                				serial.read_record().getOrigin() == origin && 
-                				serial.read_record().getRoasting() == roasting && 
-                				serial.read_record().getProcess() == process) {
-                			output();
-                			stop = true;
-                		}
-                		
-                		// if (EOF == true) {
-                			// System.out.println("There are no records fulfilling those conditions");
-                		// }
-                	}
+                    //todo
+                    /*
+                    while (true) {
+
+                        if (serial.read_record().getName().equals(buf_in.getName()) &&
+                                serial.read_record().getCaffea().equals(buf_in.getCaffea()) &&
+                                serial.read_record().getVarietal().equals(buf_in.getVarietal()) &&
+                                serial.read_record().getOrigin().equals(buf_in.getOrigin()) &&
+                                serial.read_record().getRoasting().equals(buf_in.getRoasting())  &&
+                                serial.read_record().getProcess().equals(buf_in.getProcess()) ) {
+                            //System.out.println(serial.read_record().toString());
+                            //buf_out = toLogicalRecord(toString(serial.read_record()));
+                            return buf_out;
+                        }
+                        if (serial.read_record().getName().contains("#")) {
+                            System.out.println("There are no records fulfilling those conditions");
+                            return buf_out;
+                        }
+                    }
+                    */
                     break;
                     
                 case 6:
@@ -237,7 +223,7 @@ public class Interface {
                     
                 // Case in which we open a file
                 case 7:
-                	serial.closeFile();
+                	fileman.close_archive();
                     break;
                     
                 // Case in which we exit the menu

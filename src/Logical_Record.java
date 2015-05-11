@@ -15,19 +15,7 @@ public class Logical_Record {
 	private String [] min_stocks = new String [15];
 	private String [] stocks = new String [15];
 	private String [] max_stocks = new String [15];
-	
-	
-	@Override
-	public String toString() {
-		String references="";
-		for(int i = 0; i < 15; i++) {
-			references+= barCodes[i]+" "+formats[i]+" "+prices[i]+" "+min_stocks[i]+" "+stocks[i]+" "+max_stocks[i]+".\n";
-		}
-		return "Logical_Record [name=" + name + ", caffea=" + caffea
-				+ ", varietal=" + varietal + ", origin=" + origin
-				+ ", roasting=" + roasting + ", process=" + process
-				+ ", references= \n " + references + "]";
-	}
+
 
 	public String getName() {
 		return name;

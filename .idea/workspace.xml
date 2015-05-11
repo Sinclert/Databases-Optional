@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2f62cf08-b692-4955-bc2e-f7082737f6e4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Interface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Serial.java" afterPath="$PROJECT_DIR$/src/Serial.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BufferRecord.java" afterPath="$PROJECT_DIR$/src/BufferRecord.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FileMan.java" afterPath="$PROJECT_DIR$/src/FileMan.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Interface.java" afterPath="$PROJECT_DIR$/src/Interface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Logical_Record.java" afterPath="$PROJECT_DIR$/src/Logical_Record.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DB-Optional.iws" />
@@ -26,7 +31,117 @@
     <favorites_list name="DB-Optional" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Serial.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Serial.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Interface.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Interface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="2.432886">
+              <caret line="225" column="44" selection-start-line="225" selection-start-column="44" selection-end-line="225" selection-end-column="44" />
+              <folding>
+                <element signature="docComment;class#Interface#0" expanded="false" />
+                <element signature="method#input#0;class#Interface#0" expanded="false" />
+                <element signature="method#output#1;class#Interface#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BufferRecord.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BufferRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileMan.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FileMan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="62" column="9" selection-start-line="46" selection-start-column="8" selection-end-line="62" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#436#437#0" expanded="true" />
+                <element signature="e#516#517#0" expanded="true" />
+                <element signature="e#622#623#0" expanded="true" />
+                <element signature="e#698#699#0" expanded="true" />
+                <element signature="docComment;method#search#0;class#FileMan#0" expanded="false" />
+                <element signature="e#2876#2877#0" expanded="true" />
+                <element signature="e#2944#2945#0" expanded="true" />
+                <element signature="e#4788#4789#0" expanded="true" />
+                <element signature="e#4817#4818#0" expanded="true" />
+                <element signature="e#4869#4870#0" expanded="true" />
+                <element signature="e#4909#4910#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FileManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1203" column="4" selection-start-line="1203" selection-start-column="4" selection-end-line="1203" selection-end-column="4" />
+              <folding>
+                <element signature="docComment;class#FileManager#0" expanded="false" />
+                <element signature="method#FileManager#0;class#FileManager#0" expanded="false" />
+                <element signature="docComment;method#openFileSystem#0;class#FileManager#0" expanded="false" />
+                <element signature="method#openFileSystem#0;class#FileManager#0" expanded="false" />
+                <element signature="docComment;method#closeFileSystem#0;class#FileManager#0" expanded="false" />
+                <element signature="method#closeFileSystem#0;class#FileManager#0" expanded="false" />
+                <element signature="docComment;method#flush#0;class#FileManager#0" expanded="false" />
+                <element signature="method#flush#0;class#FileManager#0" expanded="false" />
+                <element signature="docComment;method#importFile#0;class#FileManager#0" expanded="false" />
+                <element signature="method#importFile#0;class#FileManager#0" expanded="false" />
+                <element signature="e#9663#9751#0" expanded="false" />
+                <element signature="e#10629#10722#0" expanded="false" />
+                <element signature="e#14583#14622#0" expanded="false" />
+                <element signature="e#15622#15675#0" expanded="false" />
+                <element signature="docComment;method#createHash#0;class#FileManager#0" expanded="false" />
+                <element signature="method#createHash#0;class#FileManager#0" expanded="false" />
+                <element signature="method#write#0;class#FileManager#0" expanded="false" />
+                <element signature="docComment;method#writeOverflow#0;class#FileManager#0" expanded="false" />
+                <element signature="method#writeOverflow#0;class#FileManager#0" expanded="false" />
+                <element signature="method#writeOverflow#1;class#FileManager#0" expanded="false" />
+                <element signature="docComment;method#stringToByte#0;class#FileManager#0" expanded="false" />
+                <element signature="method#stringToByte#0;class#FileManager#0" expanded="false" />
+                <element signature="docComment;method#shortToByte#0;class#FileManager#0" expanded="false" />
+                <element signature="method#intToByteArray#0;class#FileManager#0" expanded="false" />
+                <element signature="docComment;method#readShort#0;class#FileManager#0" expanded="false" />
+                <element signature="method#readShort#0;class#FileManager#0" expanded="false" />
+                <element signature="method#byteArrayToInt#0;class#FileManager#0" expanded="false" />
+                <element signature="docComment;method#select#0;class#FileManager#0" expanded="false" />
+                <element signature="method#readField#0;class#FileManager#0" expanded="false" />
+                <element signature="method#readRecord#0;class#FileManager#0" expanded="false" />
+                <element signature="method#readRecordTitle#0;class#FileManager#0" expanded="false" />
+                <element signature="docComment;method#nextRecord#0;class#FileManager#0" expanded="false" />
+                <element signature="method#nextRecord#0;class#FileManager#0" expanded="false" />
+                <element signature="e#41722#41801#0" expanded="false" />
+                <element signature="docComment;method#previousRecord#0;class#FileManager#0" expanded="false" />
+                <element signature="method#previousRecord#0;class#FileManager#0" expanded="false" />
+                <element signature="docComment;method#invertedAccess#0;class#FileManager#0" expanded="false" />
+                <element signature="method#invertedAccess#0;class#FileManager#0" expanded="false" />
+                <element signature="method#main#0;class#FileManager#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -36,6 +151,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="blayhem" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
@@ -46,9 +166,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/FileMan.java" />
-        <option value="$PROJECT_DIR$/src/BufferRecord.java" />
         <option value="$PROJECT_DIR$/src/Serial.java" />
+        <option value="$PROJECT_DIR$/src/BufferTest.java" />
+        <option value="$PROJECT_DIR$/src/Logical_Record.java" />
+        <option value="$PROJECT_DIR$/src/FileManager.java" />
+        <option value="$PROJECT_DIR$/src/BufferRecord.java" />
+        <option value="$PROJECT_DIR$/src/FileMan.java" />
         <option value="$PROJECT_DIR$/src/Interface.java" />
       </list>
     </option>
@@ -63,7 +186,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1920" />
-    <option name="height" value="999" />
+    <option name="height" value="991" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -88,7 +211,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -104,7 +226,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DB-Optional" />
+              <option name="myItemId" value="DB-Optional-Git" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -114,7 +236,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DB-Optional" />
+              <option name="myItemId" value="DB-Optional-Git" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -122,8 +244,49 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DB-Optional" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DB-Optional-Git" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fileSystemManager.Utils.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DB-Optional" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DB-Optional-Git" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fileSystemManager.Utils.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -143,9 +306,9 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="FullScreen" value="false" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../../Workspace/Java/Problemas" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -396,6 +559,12 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -409,15 +578,24 @@
       <updated>1429471556877</updated>
       <workItem from="1429471558256" duration="390000" />
       <workItem from="1429472304430" duration="5114000" />
+      <workItem from="1431370440122" duration="2702000" />
+      <workItem from="1431378707460" duration="6045000" />
     </task>
+    <task id="LOCAL-00001" summary="Cambios en Interface">
+      <created>1431372950595</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1431372950595</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5504000" />
+    <option name="totallyTimeSpent" value="14251000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="999" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="23" width="1920" height="991" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -430,19 +608,19 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286334" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -457,7 +635,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="Cambios en Interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios en Interface" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -468,38 +647,82 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bin/Buffer.class">
+    <entry file="file://$PROJECT_DIR$/src/Serial.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="150" column="19" selection-start-line="150" selection-start-column="19" selection-end-line="150" selection-end-column="19" />
           <folding>
-            <element signature="e#0#9620#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BufferRecord.java">
+    <entry file="file://$PROJECT_DIR$/src/RABuffer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.049889136">
-          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logical_Record.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="109" column="5" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
           <folding>
-            <element signature="docComment;class#BufferRecord#0" expanded="false" />
+            <element signature="e#1165#1166#0" expanded="true" />
+            <element signature="e#1186#1187#0" expanded="true" />
+            <element signature="e#1786#1787#0" expanded="true" />
+            <element signature="e#1815#1816#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="211" column="20" selection-start-line="211" selection-start-column="20" selection-end-line="211" selection-end-column="20" />
+          <folding>
+            <element signature="docComment;class#Interface#0" expanded="false" />
+            <element signature="method#input#0;class#Interface#0" expanded="false" />
+            <element signature="method#output#1;class#Interface#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FileMan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29933482">
-          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="71" selection-start-line="38" selection-start-column="71" selection-end-line="38" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#436#437#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#622#623#0" expanded="true" />
+            <element signature="e#698#699#0" expanded="true" />
+            <element signature="docComment;method#search#0;class#FileMan#0" expanded="false" />
+            <element signature="e#2876#2877#0" expanded="true" />
+            <element signature="e#2944#2945#0" expanded="true" />
+            <element signature="e#4788#4789#0" expanded="true" />
+            <element signature="e#4817#4818#0" expanded="true" />
+            <element signature="e#4869#4870#0" expanded="true" />
+            <element signature="e#4909#4910#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BufferTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/fileSystemManager.Utils.jar!/fileSystem/utils/LogicalRecord.class">
+    <entry file="file://$PROJECT_DIR$/src/BufferRecord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.102622576">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -508,26 +731,183 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.446785">
           <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/htm/Buffer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.9310346">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/src.zip!/java/lang/Override.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45302013">
+          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface.java">
+    <entry file="file://$PROJECT_DIR$/src/RABuffer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4345898">
-          <caret line="46" column="32" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.11744966">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/fileSystemManager.Utils.jar!/fileSystem/utils/Buffer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.269231">
+          <caret line="114" column="5" selection-start-line="114" selection-start-column="5" selection-end-line="114" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/src.zip!/java/nio/ByteBuffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="559" column="31" selection-start-line="559" selection-start-column="31" selection-end-line="559" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/fileSystemManager.Utils.jar!/fileSystem/utils/LogicalRecord.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10356732">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BufferTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16778524">
+          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="234" column="18" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#10065#10066#0" expanded="false" />
+            <element signature="e#10148#10149#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logical_Record.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03452244">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#1165#1166#0" expanded="true" />
+            <element signature="e#1186#1187#0" expanded="true" />
+            <element signature="e#1786#1787#0" expanded="true" />
+            <element signature="e#1815#1816#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Serial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1807095">
-          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BufferRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1203" column="4" selection-start-line="1203" selection-start-column="4" selection-end-line="1203" selection-end-column="4" />
+          <folding>
+            <element signature="docComment;class#FileManager#0" expanded="false" />
+            <element signature="method#FileManager#0;class#FileManager#0" expanded="false" />
+            <element signature="docComment;method#openFileSystem#0;class#FileManager#0" expanded="false" />
+            <element signature="method#openFileSystem#0;class#FileManager#0" expanded="false" />
+            <element signature="docComment;method#closeFileSystem#0;class#FileManager#0" expanded="false" />
+            <element signature="method#closeFileSystem#0;class#FileManager#0" expanded="false" />
+            <element signature="docComment;method#flush#0;class#FileManager#0" expanded="false" />
+            <element signature="method#flush#0;class#FileManager#0" expanded="false" />
+            <element signature="docComment;method#importFile#0;class#FileManager#0" expanded="false" />
+            <element signature="method#importFile#0;class#FileManager#0" expanded="false" />
+            <element signature="e#9663#9751#0" expanded="false" />
+            <element signature="e#10629#10722#0" expanded="false" />
+            <element signature="e#14583#14622#0" expanded="false" />
+            <element signature="e#15622#15675#0" expanded="false" />
+            <element signature="docComment;method#createHash#0;class#FileManager#0" expanded="false" />
+            <element signature="method#createHash#0;class#FileManager#0" expanded="false" />
+            <element signature="method#write#0;class#FileManager#0" expanded="false" />
+            <element signature="docComment;method#writeOverflow#0;class#FileManager#0" expanded="false" />
+            <element signature="method#writeOverflow#0;class#FileManager#0" expanded="false" />
+            <element signature="method#writeOverflow#1;class#FileManager#0" expanded="false" />
+            <element signature="docComment;method#stringToByte#0;class#FileManager#0" expanded="false" />
+            <element signature="method#stringToByte#0;class#FileManager#0" expanded="false" />
+            <element signature="docComment;method#shortToByte#0;class#FileManager#0" expanded="false" />
+            <element signature="method#intToByteArray#0;class#FileManager#0" expanded="false" />
+            <element signature="docComment;method#readShort#0;class#FileManager#0" expanded="false" />
+            <element signature="method#readShort#0;class#FileManager#0" expanded="false" />
+            <element signature="method#byteArrayToInt#0;class#FileManager#0" expanded="false" />
+            <element signature="docComment;method#select#0;class#FileManager#0" expanded="false" />
+            <element signature="method#readField#0;class#FileManager#0" expanded="false" />
+            <element signature="method#readRecord#0;class#FileManager#0" expanded="false" />
+            <element signature="method#readRecordTitle#0;class#FileManager#0" expanded="false" />
+            <element signature="docComment;method#nextRecord#0;class#FileManager#0" expanded="false" />
+            <element signature="method#nextRecord#0;class#FileManager#0" expanded="false" />
+            <element signature="e#41722#41801#0" expanded="false" />
+            <element signature="docComment;method#previousRecord#0;class#FileManager#0" expanded="false" />
+            <element signature="method#previousRecord#0;class#FileManager#0" expanded="false" />
+            <element signature="docComment;method#invertedAccess#0;class#FileManager#0" expanded="false" />
+            <element signature="method#invertedAccess#0;class#FileManager#0" expanded="false" />
+            <element signature="method#main#0;class#FileManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileMan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="9" selection-start-line="46" selection-start-column="8" selection-end-line="62" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#436#437#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#622#623#0" expanded="true" />
+            <element signature="e#698#699#0" expanded="true" />
+            <element signature="docComment;method#search#0;class#FileMan#0" expanded="false" />
+            <element signature="e#2876#2877#0" expanded="true" />
+            <element signature="e#2944#2945#0" expanded="true" />
+            <element signature="e#4788#4789#0" expanded="true" />
+            <element signature="e#4817#4818#0" expanded="true" />
+            <element signature="e#4869#4870#0" expanded="true" />
+            <element signature="e#4909#4910#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.432886">
+          <caret line="225" column="44" selection-start-line="225" selection-start-column="44" selection-end-line="225" selection-end-column="44" />
+          <folding>
+            <element signature="docComment;class#Interface#0" expanded="false" />
+            <element signature="method#input#0;class#Interface#0" expanded="false" />
+            <element signature="method#output#1;class#Interface#0" expanded="false" />
           </folding>
         </state>
       </provider>
