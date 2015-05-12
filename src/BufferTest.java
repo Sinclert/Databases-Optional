@@ -14,6 +14,7 @@ public class BufferTest {
 
     /**
      * Ejemplo de uso de una memoria intermedia con pol�tica de liberaci�n aleatoria de 'numberOfPages' p�ginas de tama�o 'blockSize' bytes.
+     *
      * @param args
      */
     public static void main(String[] args) {

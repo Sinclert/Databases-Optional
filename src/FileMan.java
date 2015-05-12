@@ -22,7 +22,7 @@ public class FileMan {
 
     /* Closes all datafiles - Also invoked when exiting */
     public String close_archive() throws IOException {
-        if (fc != null){
+        if (fc != null) {
             buffer.releasePagePolicy(fc, buffer.getNumberOfPages());
             serial.closeFile();
         }
