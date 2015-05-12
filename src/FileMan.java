@@ -8,7 +8,8 @@ public class FileMan {
     final int blockSize = 1022;
     RABuffer buffer;
     FileChannel fc;
-    Serial serial = new Serial();
+    Serial oldSerial = new Serial();
+    Serial newSerial = new Serial();
 
     public FileMan() {
         buffer = new RABuffer();
@@ -16,7 +17,7 @@ public class FileMan {
 
     /* Open the datafile identified be the given filename */
     public String open_archive(String fileName) throws IOException {
-        serial.openFile(fileName, "RW");
+        buffer.openFile(fileName, "RW");
         return "File system " + fileName + " opened";
     }
 
@@ -24,7 +25,7 @@ public class FileMan {
     public String close_archive() throws IOException {
         if (fc != null) {
             buffer.releasePagePolicy(fc, buffer.getNumberOfPages());
-            serial.closeFile();
+            buffer.close(fc);
         }
         return "File system closed";
     }
@@ -43,9 +44,17 @@ public class FileMan {
     /* Reads a serial file (old design) and inserts evey record read into the new datafile
      * @param: String old_filename: full path and name of the original (old) datafile
      */
-    public String imports(String old_filename) {
-        return ("Import " + old_filename + " method finished (not implemented yet)");
+    public String imports(String old_filename) throws IOException {
+        open_archive(old_filename);
+        Logical_Record record;
 
+        while (true){
+            record = oldSerial.read_record();
+            if(record.getName().contains("#")) {
+                return ("Import " + old_filename + " method finished.");
+            }
+            newSerial.writeBlock(toString(record));
+        }
     }
 
     /**
@@ -56,11 +65,11 @@ public class FileMan {
      * @param: buffer buf_out: Buffer containing the search conditions,
      * @param: buffer buf_out: buffer to place first matching record
      */
-    public Logical_Record search(String archive, BufferRecord buf_in) throws IOException {
+    public Logical_Record search(String archive, BufferRecord buf_in, int times) throws IOException {
 
         Serial serial = new Serial();
         Logical_Record buf_out;
-        int count = 0;
+        int counterF = 0, counterT = 0;
 
         // TODO What should we do with archive?
 
@@ -68,11 +77,12 @@ public class FileMan {
             buf_out = serial.read_record();
             for (int i = 0; i < 6; i++) {
                 if (buf_in.getFields(i) && buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) {
-                    count++;
+                    counterF++;
                 } else if (buf_in.getFields(i) && !buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) break;
             }
 
-            if (buf_in.countFields() == count) return buf_out;
+            if (buf_in.countFields() == counterF) counterT++;
+            if (counterT == times) return buf_out;
 
             if (buf_out.getName().contains("#")) {
                 System.out.println("There are no records fulfilling those conditions");

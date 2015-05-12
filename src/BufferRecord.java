@@ -1,6 +1,7 @@
 package src;
 
 public class BufferRecord extends Logical_Record {
+
     private boolean[] fields = {false, false, false, false, false, false};
 
     public boolean getFields(int i) {

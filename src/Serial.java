@@ -11,7 +11,7 @@ public class Serial {
     private RandomAccessFile f;
     private long filesize;
     public static final int BLOCKSIZE = 1022;
-    int i, cnt_byte;
+    int cnt_byte;
 
     /**
      * Opens the file in the specified mode, pointing to first block.
@@ -112,13 +112,17 @@ public class Serial {
     /**
      * It writes bytes in the new file
      *
-     * @param block
+     * @param string
      * @param pos
      * @param b
      * @throws IOException
      */
-    public void writeBlock_byte(byte[] block, int pos, char b) throws IOException {
+    public void writeBlock_byte(String string, int pos, char b) throws IOException {
         if (pos < BLOCKSIZE) {
+            byte[] block = new byte[string.length()];
+            for (int i = 0; i < string.length(); i++) {
+                block[i] = (byte) string.toCharArray()[i];
+            }
             f.write(block, pos, b);
         }
     }
@@ -131,8 +135,8 @@ public class Serial {
      * @param s
      * @throws IOException
      */
-    public void writeBlock_string(byte[] block, int pos, String s) throws IOException {
-        for (i = 0; i < s.length(); i++) {
+    public void writeBlock_string(String block, int pos, String s) throws IOException {
+        for (int i = 0; i < s.length(); i++) {
             writeBlock_byte(block, pos, s.charAt(i));
         }
     }
@@ -143,8 +147,8 @@ public class Serial {
      *
      * @param block : the array of bytes (1024) to be written
      */
-    public void writeBlock(byte[] block) throws IOException {
-        f.write(block);
+    public void writeBlock(String block) throws IOException {
+        f.writeBytes(block);
     }
 
 

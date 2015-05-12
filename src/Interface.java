@@ -95,8 +95,9 @@ public class Interface {
 
     public void iface() throws IOException {
 
-        int references_num = 1;
+        int references_num = 1, times = 1;
         boolean exit = false;
+        BufferRecord buf_in = new BufferRecord();
         Scanner sc = new Scanner(System.in);
 
         while (!exit) {
@@ -151,8 +152,11 @@ public class Interface {
 
                 // Case in which we search a record
                 case 4:
-                    BufferRecord buf_in = new BufferRecord();
                     String input;
+                    times = 1;
+                    for (int i = 0; i < 6; i++) {
+                        buf_in.setFields(i, false);
+                    } //set fields to 0 for next search and on
 
                     System.out.println("Introducing a record to be found:");
                     System.out.println("Introduce a name");
@@ -197,34 +201,15 @@ public class Interface {
                         buf_in.setFields(5, true);
                     }
 
-                    Logical_Record buf_out = fileman.search("Coffea", buf_in);
-                    output(buf_out);
+                    output(fileman.search("Coffea", buf_in, times));
                     break;
+
 
                 // Case in which we search the next record
                 case 5:
-                    //todo
-                    /*
-                    while (true) {
-
-                        if (serial.read_record().getName().equals(buf_in.getName()) &&
-                                serial.read_record().getCaffea().equals(buf_in.getCaffea()) &&
-                                serial.read_record().getVarietal().equals(buf_in.getVarietal()) &&
-                                serial.read_record().getOrigin().equals(buf_in.getOrigin()) &&
-                                serial.read_record().getRoasting().equals(buf_in.getRoasting())  &&
-                                serial.read_record().getProcess().equals(buf_in.getProcess()) ) {
-                            //System.out.println(serial.read_record().toString());
-                            //buf_out = toLogicalRecord(toString(serial.read_record()));
-                            return buf_out;
-                        }
-                        if (serial.read_record().getName().contains("#")) {
-                            System.out.println("There are no records fulfilling those conditions");
-                            return buf_out;
-                        }
-                    }
-                    */
-
-                    System.out.println("Do you want to see the next record?");
+                    if (!(buf_in.countFields() > 0)) break;
+                    times++;
+                    output(fileman.search("Coffea", buf_in, times));
                     break;
 
                 case 6:
