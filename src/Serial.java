@@ -91,7 +91,8 @@ public class Serial {
 			if(f.readLine().toCharArray()[i]==' ') break;
 			record.setBarCodes(j, read_string(15));
 			record.setFormats(j, read_string(12));
-			record.setPrices(j, read_string(15));
+			record.setPackagings(j, read_string(15));
+			record.setPrices(j, read_string(11));
 			record.setMin_stocks(j, read_string(3));
 			record.setStocks(j, read_string(4));
 			record.setMax_stocks(j, read_string(4));

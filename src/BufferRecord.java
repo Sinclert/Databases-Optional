@@ -3,10 +3,6 @@ package src;
 public class BufferRecord extends Logical_Record{
     private boolean[] fields = {false, false, false, false, false, false};
 
-    public boolean[] getFields() {
-        return fields;
-    }
-
     public boolean getFields(int i) {
         return fields[i];
     }
@@ -18,7 +14,7 @@ public class BufferRecord extends Logical_Record{
     public int countFields(){
         int count = 0;
         for (int i = 0; i < 6; i++) {
-            if(fields[i])count++;
+            if(fields[i]) count++;
         }
         return count;
     }

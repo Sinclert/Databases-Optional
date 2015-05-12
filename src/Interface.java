@@ -89,10 +89,6 @@ public class Interface {
         return record;
     }
 
-    public void output() throws IOException {
-        System.out.println(serial.read_record().toString());
-    }
-    
     public void output(Logical_Record record) throws IOException {
         System.out.println(record.toString());
     }

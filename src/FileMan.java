@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 
 public class FileMan {
+
     final int blockSize = 1022;
     RABuffer buffer;
     FileChannel fc;
     Serial serial = new Serial();
-
 
     public FileMan() {
         buffer = new RABuffer();
@@ -25,7 +25,6 @@ public class FileMan {
         if (fc != null){
             buffer.releasePagePolicy(fc, buffer.getNumberOfPages());
             serial.closeFile();
-
         }
         return "File system closed";
     }
@@ -58,10 +57,13 @@ public class FileMan {
      * @param: buffer buf_out: buffer to place first matching record
      */
     public Logical_Record search(String archive, BufferRecord buf_in) throws IOException {
+
         Serial serial = new Serial();
         Logical_Record buf_out;
         int count = 0;
-        //TODO OPENARCHIVE O DONDE METEMOS ARCHIVE??
+
+        // TODO What should we do with archive?
+
         while (true) {
             buf_out = serial.read_record();
             for (int i = 0; i < 6; i++) {
@@ -69,6 +71,7 @@ public class FileMan {
                     count++;
                 } else if (buf_in.getFields(i) && !buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) break;
             }
+
             if (buf_in.countFields() == count) return buf_out;
 
             if (buf_out.getName().contains("#")) {
@@ -80,16 +83,17 @@ public class FileMan {
     }
 
     /* Retrieves next record matching current search  */
-    public String siguiente(BufferRecord buf_out) {
+    public String next(BufferRecord buf_out) {
         return ("Next method finished (not implemented yet");
     }
 
     public String toString(Logical_Record record) {
         String references = "";
         for (int i = 0; i < 15; i++) {
-            references += record.getBarCodes()[i] + " " + record.getFormats()[i] + " " + record.getPrices()[i] + " " + record.getMin_stocks()[i] + " "
-                    + record.getStocks()[i] + " " + record.getMax_stocks()[i] + ".\n";
+            references += record.getBarCodes()[i] + " " + record.getFormats()[i] + " " + record.getPackagings()[i] + " " + record.getPrices()[i] + " "
+                    + record.getMin_stocks()[i] + " " + record.getStocks()[i] + " " + record.getMax_stocks()[i] + ".\n";
         }
+
         return "Logical_Record [name=" + record.getName() + ", caffea=" + record.getCaffea()
                 + ", varietal=" + record.getVarietal() + ", origin=" + record.getOrigin()
                 + ", roasting=" + record.getRoasting() + ", process=" + record.getProcess()
@@ -97,6 +101,7 @@ public class FileMan {
     }
 
     private Logical_Record toLogicalRecord(String string) throws IOException {
+
         Logical_Record record = new Logical_Record();
 
         record.setName(string.substring(0, 49));
@@ -112,8 +117,10 @@ public class FileMan {
             i += 15;
             record.setFormats(j, string.substring(i, i + 11));
             i += 12;
-            record.setPrices(j, string.substring(i, i + 14));
+            record.setPackagings(j, string.substring(i, i + 14));
             i += 15;
+            record.setPrices(j, string.substring(i, i + 10));
+            i += 11;
             record.setMin_stocks(j, string.substring(i, i + 2));
             i += 3;
             record.setStocks(j, string.substring(i, i + 3));
@@ -125,10 +132,9 @@ public class FileMan {
     }
 
     private int readFFP(int bucket) {
-        return bucket;
+        return 0;
     }
 
     private void writeFFP(int bucket, short FFP) {
-        if (bucket == 0) FFP = 0;
     }
 }
