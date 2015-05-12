@@ -100,8 +100,7 @@ public class Interface {
     public void iface() throws IOException{
     	
     	int references_num = 1;
-    	boolean exit = false, stop = false;
-    	String name = "", caffea = "", varietal = "", origin = "", roasting = "", process = "";
+    	boolean exit = false;
     	Scanner sc = new Scanner(System.in);
     	
     	while (!exit) {
@@ -157,40 +156,53 @@ public class Interface {
                 // Case in which we search a record
                 case 4:
                 	BufferRecord buf_in = new BufferRecord();
+					String input;
 
                 	System.out.println("Introducing a record to be found:");
                 	System.out.println("Introduce a name");
-                	if (sc.hasNext()) {
-                		buf_in.setName(sc.nextLine());
+					input = sc.nextLine();
+                	if (input.length()>0 && input.length()<=50) {
+                		buf_in.setName(input);
+						buf_in.setFields(0, true);
                 	}
                 	
                 	System.out.println("Introduce a caffea");
-                	if (sc.hasNext()) {
-                        buf_in.setCaffea(sc.nextLine());
-                	}
+					input = sc.nextLine();
+					if (input.length()>0 && input.length()<=9) {
+						buf_in.setCaffea(input);
+						buf_in.setFields(1, true);
+					}
                 	
                 	System.out.println("Introduce a varietal");
-                	if (sc.hasNext()) {
-                        buf_in.setVarietal(sc.nextLine());
-                	}
+					input = sc.nextLine();
+					if (input.length()>0 && input.length()<=28) {
+						buf_in.setVarietal(input);
+						buf_in.setFields(2, true);
+					}
 
                 	System.out.println("Introduce a origin");
-                	if (sc.hasNext()) {
-                        buf_in.setOrigin(sc.nextLine());
-                	}
+					input = sc.nextLine();
+					if (input.length()>0 && input.length()<=14) {
+						buf_in.setOrigin(input);
+						buf_in.setFields(3, true);
+					}
 
                 	System.out.println("Introduce a roasting");
-                	if (sc.hasNext()) {
-                        buf_in.setRoasting(sc.nextLine());
-                	}
+					input = sc.nextLine();
+					if (input.length()>0 && input.length()<=7) {
+						buf_in.setRoasting(input);
+						buf_in.setFields(4, true);
+					}
 
                 	System.out.println("Introduce a process");
-                	if (sc.hasNext()) {
-                        buf_in.setProcess(sc.nextLine());
-                	}
-                    BufferRecord buf_out = fileman.search("Coffea", buf_in, buf_out = new BufferRecord());
+					input = sc.nextLine();
+					if (input.length()>0 && input.length()<=7) {
+						buf_in.setProcess(input);
+						buf_in.setFields(5, true);
+					}
 
-                	System.out.println("Do you want to see the next record?");
+                    Logical_Record buf_out = fileman.search("Coffea", buf_in);
+                    output(buf_out);
                     break;
                     
                 // Case in which we search the next record
@@ -215,6 +227,8 @@ public class Interface {
                         }
                     }
                     */
+
+					System.out.println("Do you want to see the next record?");
                     break;
                     
                 case 6:

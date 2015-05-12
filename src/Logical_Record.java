@@ -120,5 +120,29 @@ public class Logical_Record {
 	public void setMax_stocks(int i, String max_stock) {
 		this.max_stocks[i] = max_stock;
 	}
+
+	public String getAttribute(int i){
+		switch (i){
+			case 0: return getName();
+			case 1: return getCaffea();
+			case 2: return getVarietal();
+			case 3: return getOrigin();
+			case 4: return getRoasting();
+			case 5: return getProcess();
+			default: return "";
+		}
+	}
+
+	public void setAttribute(int i, String att){
+		switch (i){
+			case 0: setName(att); break;
+			case 1: setCaffea(att); break;
+			case 2: setVarietal(att); break;
+			case 3: setOrigin(att); break;
+			case 4: setRoasting(att); break;
+			case 5: setProcess(att); break;
+			default: break;
+		}
+	}
 	
 }

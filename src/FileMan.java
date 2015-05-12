@@ -1,24 +1,39 @@
 package src;
 
 import java.io.IOException;
-import java.util.SplittableRandom;
+import java.nio.channels.FileChannel;
 
 public class FileMan {
     final int blockSize = 1022;
+    RABuffer buffer;
+    FileChannel fc;
+    Serial serial = new Serial();
+
+
+    public FileMan() {
+        buffer = new RABuffer();
+    }
 
     /* Open the datafile identified be the given filename */
-    public String open_archive(String filename) {
-        return (" Method open system " + filename + " is finished (not implemented yet)");
+    public String open_archive(String fileName) throws IOException {
+        serial.openFile(fileName, "RW");
+        return "File system " + fileName + " opened";
     }
 
     /* Closes all datafiles - Also invoked when exiting */
-    public String close_archive() {
-        return (" Method close system is finished(not implemented yet)");
+    public String close_archive() throws IOException {
+        if (fc != null){
+            buffer.releasePagePolicy(fc, buffer.getNumberOfPages());
+            serial.closeFile();
+
+        }
+        return "File system closed";
     }
 
     /* Saves all modified pages from the buffeer into the disk (flush) */
     public String save_all() {
-        return (" Method save all is finished(not implemented yet)");
+        buffer.save(fc);
+        return "Files are correctly saved";
     }
 
     /* Inserts a record in currently open NEW archive */
@@ -31,6 +46,7 @@ public class FileMan {
      */
     public String imports(String old_filename) {
         return ("Import " + old_filename + " method finished (not implemented yet)");
+
     }
 
     /**
@@ -41,26 +57,26 @@ public class FileMan {
      * @param: buffer buf_out: Buffer containing the search conditions,
      * @param: buffer buf_out: buffer to place first matching record
      */
-    public BufferRecord search(String archive, BufferRecord buf_in, BufferRecord buf_out) throws IOException {
+    public Logical_Record search(String archive, BufferRecord buf_in) throws IOException {
         Serial serial = new Serial();
-        // TODO problema con los records que buscamos dejando espacios en blanco
+        Logical_Record buf_out;
+        int count = 0;
+        //TODO OPENARCHIVE O DONDE METEMOS ARCHIVE??
         while (true) {
-
-            if (serial.read_record().getName().equals(buf_in.getName()) &&
-                    serial.read_record().getCaffea().equals(buf_in.getCaffea()) &&
-                    serial.read_record().getVarietal().equals(buf_in.getVarietal()) &&
-                    serial.read_record().getOrigin().equals(buf_in.getOrigin()) &&
-                    serial.read_record().getRoasting().equals(buf_in.getRoasting())  &&
-                    serial.read_record().getProcess().equals(buf_in.getProcess()) ) {
-                //System.out.println(serial.read_record().toString());
-                //buf_out = toLogicalRecord(toString(serial.read_record()));
-                return buf_out;
+            buf_out = serial.read_record();
+            for (int i = 0; i < 6; i++) {
+                if (buf_in.getFields(i) && buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) {
+                    count++;
+                } else if (buf_in.getFields(i) && !buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) break;
             }
-            if (serial.read_record().getName().contains("#")) {
+            if (buf_in.countFields() == count) return buf_out;
+
+            if (buf_out.getName().contains("#")) {
                 System.out.println("There are no records fulfilling those conditions");
-                return buf_out;
+                break;
             }
         }
+        return null;
     }
 
     /* Retrieves next record matching current search  */
