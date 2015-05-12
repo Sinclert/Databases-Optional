@@ -1,6 +1,8 @@
 package src;
 
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 
 /**
@@ -11,6 +13,7 @@ public class Serial {
     private RandomAccessFile f;
     private long filesize;
     public static final int BLOCKSIZE = 1022;
+    byte[] ffps = new byte[2];
     int cnt_byte;
 
     /**
@@ -35,7 +38,6 @@ public class Serial {
         cnt_byte = 0;
         readBlock();
     }
-
 
     /**
      * Close the file (access ends)
@@ -108,7 +110,6 @@ public class Serial {
         f.seek(0);
     }
 
-
     /**
      * It writes bytes in the new file
      *
@@ -151,7 +152,6 @@ public class Serial {
         f.writeBytes(block);
     }
 
-
     /**
      * Provides current number of blocks in the file (n).
      */
@@ -159,5 +159,47 @@ public class Serial {
         long res = f.length() + (BLOCKSIZE - 1);
         res /= BLOCKSIZE;
         return res;
+    }
+
+
+    public int readFFP(int bucket) throws IOException {
+        byte[] block = new byte[BLOCKSIZE+2];
+        f.read(block);
+        return bucket;
+    }
+
+    public int writeFFP(int bucket, int FFP) throws IOException {
+        return bucket;
+    }
+
+    public int FFPtoInt(byte ffps []){
+        int[] array = new int[10];
+
+        int ffps0 = (int) ffps[0] + 128;
+        for (int i = 9; i > 1; i--) {
+            array[i] = ffps0 % 2;
+            ffps0 = ffps0 / 2;
+        }
+
+        int ffps1 = (int) ffps[1] + 128;
+        for (int i = 1; i >= 0; i--) {
+            array[i] = ffps1 % 2;
+            ffps1 = ffps1 / 2;
+        }
+
+        /*
+         * 0 1 2 3 4 5 6 7 8 9
+         * 0 - 128 - 256
+         * -128 - 0 - 128
+         * sumamos 128 para ajustar la escala hasta 256
+         */
+        int sum = 0;
+        for (int i = 9, j = 0; i >= 0; i--, j++) {
+            if (i != 2) sum += array[i] * (Math.pow(2, j));
+            else j--;
+        }
+        System.out.println(Arrays.toString(array));
+        System.out.println(sum);
+        return sum;
     }
 }

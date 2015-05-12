@@ -212,8 +212,10 @@ public class Interface {
                     output(fileman.search("Coffea", buf_in, times));
                     break;
 
+                // Case in which the search is finished
                 case 6:
-                    // TODO
+                    times = 1;
+                    for (int i = 0; i < 6; i++) buf_in.setAttribute(i, "");
                     break;
 
                 // Case in which we open a file
