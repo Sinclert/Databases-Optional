@@ -17,7 +17,7 @@ public class FileMan {
 
     /* Open the datafile identified be the given filename */
     public String open_archive(String fileName) throws IOException {
-        buffer.openFile(fileName, "RW");
+        buffer.openFile(fileName, "rw");
         return "File system " + fileName + " opened";
     }
 

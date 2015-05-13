@@ -1,12 +1,18 @@
 package src;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 /**
  * Created by blayhem on 13/5/15.
  */
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        Interface inter = new Interface();
+        inter.iface();
+    }
+
+    public void ffps(){
         byte[] ffps = {3, -100}; // 128, 255 = 384
         int[] array = new int[10];
 

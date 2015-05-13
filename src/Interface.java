@@ -136,17 +136,17 @@ public class Interface {
                     input(references_num, new_record);
 
                     // TODO escribir el registro en el archivo
-
                     break;
 
                 // Case in which we import from another file
                 case 3:
 
                     System.out.println("Introduce the name of the file from which you want to import the records:");
-                    serial.openFile(sc.next(), "R");
+                    String old_file = sc.next();
+                    serial.openFile(old_file, "R");
 
                     for (int i = 0; i < serial.fileSize(); i += 1024) {
-                        fileman.imports(Arrays.toString(serial.readBlock())); //TODO revisar casteos
+                        fileman.imports(old_file); //TODO revisar casteos?? falla fileman.imports
                     }
                     break;
 

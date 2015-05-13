@@ -23,13 +23,13 @@ public class Serial {
      * @param mode,, mode = "R" -> read ; <br/> "W" -> write ; <br/> "RW" -> read-write
      */
     public void openFile(String file, String mode) throws IOException {
-        if (mode.equals("R")) {
+        if (mode.equals("R") || (mode.equals("r"))) {
             f = new RandomAccessFile(file, "r");
             filesize = f.length();
-        } else if (mode.equals("W")) {
+        } else if (mode.equals("W") || (mode.equals("w"))) {
             f = new RandomAccessFile(file, "w");
             filesize = f.length();
-        } else if (mode.equals("RW")) {
+        } else if (mode.equals("RW") || (mode.equals("rw"))) {
             f = new RandomAccessFile(file, "rw");
             filesize = f.length();
         } else {
