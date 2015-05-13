@@ -17,7 +17,9 @@ public class FileMan {
 
     /* Open the datafile identified be the given filename */
     public String open_archive(String fileName) throws IOException {
-        buffer.openFile(fileName, "rw");
+        if(fileName.equalsIgnoreCase("coffea.sql"))oldSerial.openFile(fileName, "rw");
+        else if(fileName.equalsIgnoreCase("newCoffea.sql")) newSerial.openFile("newCoffea.sql", "rw");
+        //buffer.openFile(fileName, "rw");
         return "File system " + fileName + " opened";
     }
 

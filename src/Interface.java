@@ -116,7 +116,7 @@ public class Interface {
 
                 // Case in which we open a file
                 case 1:
-                    fileman.open_archive("newCoffea");
+                    fileman.open_archive("newCoffea.sql");
                     break;
 
                 // Case in which we insert a record

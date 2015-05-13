@@ -14,7 +14,8 @@ public class Serial {
     private long filesize;
     public static final int BLOCKSIZE = 1022;
     byte[] ffps = new byte[2];
-    int cnt_byte;
+    int cnt_byte = 0;
+    byte[] block = new byte[BLOCKSIZE];
 
     /**
      * Opens the file in the specified mode, pointing to first block.
@@ -23,13 +24,13 @@ public class Serial {
      * @param mode,, mode = "R" -> read ; <br/> "W" -> write ; <br/> "RW" -> read-write
      */
     public void openFile(String file, String mode) throws IOException {
-        if (mode.equals("R") || (mode.equals("r"))) {
+        if (mode.equalsIgnoreCase("R")) {
             f = new RandomAccessFile(file, "r");
             filesize = f.length();
-        } else if (mode.equals("W") || (mode.equals("w"))) {
+        } else if (mode.equalsIgnoreCase("W")) {
             f = new RandomAccessFile(file, "w");
             filesize = f.length();
-        } else if (mode.equals("RW") || (mode.equals("rw"))) {
+        } else if (mode.equalsIgnoreCase("RW")) {
             f = new RandomAccessFile(file, "rw");
             filesize = f.length();
         } else {
@@ -68,11 +69,13 @@ public class Serial {
     }
 
     public char read_byte() throws IOException {
-        if (cnt_byte > 1023) {
-            readBlock();
+        boolean reset = false;
+        if (cnt_byte > 1021) { //>
+            block = readBlock();
             cnt_byte = 0;
+            reset = true;
         }
-        byte[] block = readBlock();
+        if(cnt_byte == 0 && !reset) block = readBlock();
         return (char) block[cnt_byte++];
     }
 
@@ -90,8 +93,8 @@ public class Serial {
         record.setRoasting(read_string(7));
         record.setProcess(read_string(7));
 
-        for (int i = 115, j = 0; i < 911; i = i + 53, j++) {
-            if (f.readLine().toCharArray()[i] == ' ') break;
+
+        for (int i = 115, j = 0; i < 1075; i = i + 64, j++) {
             record.setBarCodes(j, read_string(15));
             record.setFormats(j, read_string(12));
             record.setPackagings(j, read_string(15));
