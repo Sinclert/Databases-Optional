@@ -7,9 +7,9 @@ import java.util.Arrays;
  * Created by blayhem on 13/5/15.
  */
 public class Test {
+
     public static void main(String[] args) throws IOException {
-        Interface inter = new Interface();
-        inter.iface();
+        inter();
     }
 
     public void ffps(){
@@ -69,5 +69,10 @@ public class Test {
 
         byte[]  ffpsdef = {(byte)ffps21,(byte)ffps22};
         System.out.println(Arrays.toString(ffpsdef));
+    }
+
+    public static void inter() throws IOException {
+        Interface inter = new Interface();
+        inter.iface();
     }
 }

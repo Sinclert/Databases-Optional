@@ -90,7 +90,7 @@ public class Interface {
     }
 
     public void output(Logical_Record record) throws IOException {
-        System.out.println(record.toString());
+        System.out.println(fileman.toString(record));
     }
 
     public void iface() throws IOException {
@@ -142,12 +142,7 @@ public class Interface {
                 case 3:
 
                     System.out.println("Introduce the name of the file from which you want to import the records:");
-                    String old_file = sc.next();
-                    serial.openFile(old_file, "R");
-
-                    for (int i = 0; i < serial.fileSize(); i += 1024) {
-                        fileman.imports(old_file); //TODO revisar casteos?? falla fileman.imports
-                    }
+                    System.out.println(fileman.imports(sc.next()));
                     break;
 
                 // Case in which we search a record
@@ -159,7 +154,9 @@ public class Interface {
                     } //set fields to 0 for next search and on
 
                     System.out.println("Introducing a record to be found:");
+
                     System.out.println("Introduce a name");
+                    input = sc.nextLine();
                     input = sc.nextLine();
                     if (input.length() > 0 && input.length() <= 50) {
                         buf_in.setName(input);
@@ -201,7 +198,7 @@ public class Interface {
                         buf_in.setFields(5, true);
                     }
 
-                    output(fileman.search("Coffea", buf_in, times));
+                    output(fileman.search("coffea.sql", buf_in, times));
                     break;
 
 

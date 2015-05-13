@@ -17,7 +17,7 @@ public class FileMan {
 
     /* Open the datafile identified be the given filename */
     public String open_archive(String fileName) throws IOException {
-        if(fileName.equalsIgnoreCase("coffea.sql"))oldSerial.openFile(fileName, "rw");
+        if(fileName.equalsIgnoreCase("coffea.sql")) oldSerial.openFile(fileName, "rw");
         else if(fileName.equalsIgnoreCase("newCoffea.sql")) newSerial.openFile("newCoffea.sql", "rw");
         //buffer.openFile(fileName, "rw");
         return "File system " + fileName + " opened";
@@ -48,11 +48,20 @@ public class FileMan {
      */
     public String imports(String old_filename) throws IOException {
         open_archive(old_filename);
+        open_archive("newCoffea.sql");
         Logical_Record record;
 
         while (true){
             record = oldSerial.read_record();
-            if(record.getName().contains("#")) {
+            if(toString(record).contains("#")) {
+                System.out.println(record.getName());
+                System.out.println(record.getCaffea());
+                System.out.println(record.getVarietal());
+                System.out.println(record.getOrigin());
+                System.out.println(record.getRoasting());
+                System.out.println(record.getProcess());
+
+                System.out.println(toString(record));
                 return ("Import " + old_filename + " method finished.");
             }
             newSerial.writeBlock(toString(record));
@@ -69,14 +78,14 @@ public class FileMan {
      */
     public Logical_Record search(String archive, BufferRecord buf_in, int times) throws IOException {
 
-        Serial serial = new Serial();
-        Logical_Record buf_out;
+        Logical_Record buf_out = new Logical_Record();
+        open_archive(archive);
         int counterF = 0, counterT = 0;
 
         // TODO What should we do with archive?
 
         while (true) {
-            buf_out = serial.read_record();
+            buf_out = oldSerial.read_record();
             for (int i = 0; i < 6; i++) {
                 if (buf_in.getFields(i) && buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) {
                     counterF++;
@@ -86,12 +95,12 @@ public class FileMan {
             if (buf_in.countFields() == counterF) counterT++;
             if (counterT == times) return buf_out;
 
-            if (buf_out.getName().contains("#")) {
+            if (toString(buf_out).contains("#")) {
                 System.out.println("There are no records fulfilling those conditions");
                 break;
             }
         }
-        return null;
+        return buf_out;
     }
 
     /* Retrieves next record matching current search  */
@@ -101,15 +110,23 @@ public class FileMan {
 
     public String toString(Logical_Record record) {
         String references = "";
+        boolean write;
         for (int i = 0; i < 15; i++) {
-            references += record.getBarCodes()[i] + " " + record.getFormats()[i] + " " + record.getPackagings()[i] + " " + record.getPrices()[i] + " "
-                    + record.getMin_stocks()[i] + " " + record.getStocks()[i] + " " + record.getMax_stocks()[i] + ".\n";
+            /*
+            write = true;
+            for (int j = 0; j < 7; j++) {
+                if(record.getRefferences(j, i) == null) write = false;
+            }
+            if (!write) break;
+            */
+            references += record.getBarCodes()[i] + record.getFormats()[i] + record.getPackagings()[i] + record.getPrices()[i]
+                    + record.getMin_stocks()[i] + record.getStocks()[i] + record.getMax_stocks()[i];
         }
 
-        return "Logical_Record [name=" + record.getName() + ", caffea=" + record.getCaffea()
-                + ", varietal=" + record.getVarietal() + ", origin=" + record.getOrigin()
-                + ", roasting=" + record.getRoasting() + ", process=" + record.getProcess()
-                + ", references= \n " + references + "]";
+        return record.getName() + record.getCaffea()
+                + record.getVarietal() + record.getOrigin()
+                + record.getRoasting() + record.getProcess()
+                + references + "\n";
     }
 
     private Logical_Record toLogicalRecord(String string) throws IOException {

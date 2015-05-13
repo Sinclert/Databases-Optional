@@ -70,7 +70,7 @@ public class Serial {
 
     public char read_byte() throws IOException {
         boolean reset = false;
-        if (cnt_byte > 1021) { //>
+        if (cnt_byte > 1021) {
             block = readBlock();
             cnt_byte = 0;
             reset = true;
@@ -93,15 +93,19 @@ public class Serial {
         record.setRoasting(read_string(7));
         record.setProcess(read_string(7));
 
+        String barCode;
+        for (int j = 0; j < 15; j++) {
+            barCode = read_string(15);
+            if (barCode.contains(" ") || record.getBarCodes()[j] == null) break;
 
-        for (int i = 115, j = 0; i < 1075; i = i + 64, j++) {
-            record.setBarCodes(j, read_string(15));
+            record.setBarCodes(j, barCode);
             record.setFormats(j, read_string(12));
             record.setPackagings(j, read_string(15));
             record.setPrices(j, read_string(11));
             record.setMin_stocks(j, read_string(3));
             record.setStocks(j, read_string(4));
             record.setMax_stocks(j, read_string(4));
+            //for (int i = 0; i < 7; i++) {if(record.getRefferences(i, j) == null) return record;}
         }
         return record;
     }
