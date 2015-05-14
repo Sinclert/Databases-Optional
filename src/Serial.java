@@ -12,7 +12,7 @@ public class Serial {
 
     private RandomAccessFile f;
     private long filesize;
-    public static final int BLOCKSIZE = 1022;
+    public static final int BLOCKSIZE = 1024;
     byte[] ffps = new byte[2];
     int cnt_byte = 0, cnt_bucket = 0;
     byte[] block = new byte[BLOCKSIZE];
@@ -170,7 +170,7 @@ public class Serial {
 
 
     public int readFFP(int bucket) throws IOException {
-        byte[] block = new byte[BLOCKSIZE + 2];
+        byte[] block = new byte[BLOCKSIZE];
         f.read(block);
         return bucket;
     }

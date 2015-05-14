@@ -64,7 +64,7 @@ public class FileMan {
 
         while (true) {
             record = oldSerial.read_record();
-            if (records > 1200) {
+            if (records > 749) {
                 newSerial.writeBlock("EOF");
                 break;
             }
@@ -84,23 +84,23 @@ public class FileMan {
      */
     public Logical_Record search(String archive, BufferRecord buf_in, int times) throws IOException {
 
-        Logical_Record buf_out = new Logical_Record();
+        Logical_Record buf_out;
         open_archive(archive);
         int counterF = 0, counterT = 0;
 
         while (true) {
-            buf_out = oldSerial.read_record();
+            buf_out = newSerial.read_record();
             for (int i = 0; i < 6; i++) {
                 if (buf_in.getFields(i) && buf_out.getAttribute(i).contains(buf_in.getAttribute(i))) {
                     counterF++;
-                } else if (buf_in.getFields(i) && !buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) continue;
+                } else if (buf_in.getFields(i) && !buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) break;
             }
 
             if (buf_in.countFields() == counterF) counterT++;
             if (counterT == times) return buf_out;
 
             if (toString(buf_out).contains("#")) {
-                System.out.println("There are no records fulfilling those conditions");
+                System.out.println("There are no records fulfilling those conditions. Try searching without spaces between words.");
                 break;
             }
         }
@@ -129,7 +129,7 @@ public class FileMan {
         return record.getName() + record.getCaffea()
                 + record.getVarietal() + record.getOrigin()
                 + record.getRoasting() + record.getProcess()
-                + references;
+                + references + "\n";
     }
 
     private Logical_Record toLogicalRecord(String string) throws IOException {
