@@ -5,7 +5,6 @@ import java.nio.channels.FileChannel;
 
 public class FileMan {
 
-    final int blockSize = 1022;
     RABuffer buffer;
     FileChannel fc;
     Serial oldSerial = new Serial();
@@ -40,9 +39,15 @@ public class FileMan {
 
     /* Inserts a record in currently open NEW archive */
     public String insert(Logical_Record new_record) throws IOException {
-        System.out.printf(toString(new_record));
-        newSerial.writeBlock_string(toString(new_record));
-        return ("Inserting into new archive; method finished (not implemented yet)");
+        newSerial.openFile("newCoffea.sql", "rw");
+        while (true){
+            new_record = newSerial.read_record();
+            if(toString(new_record).contains("EOF")) {
+                newSerial.writeBlock("EOF");
+                break;
+            }
+        }
+        return ("Inserting the new record");
     }
 
     /* Reads a serial file (old design) and inserts evey record read into the new datafile
@@ -56,6 +61,7 @@ public class FileMan {
         while (true){
             record = oldSerial.read_record();
             if(toString(record).contains("#")) {
+                newSerial.writeBlock("EOF");
                 return ("Import " + old_filename + " method finished.");
             }
             newSerial.writeBlock(toString(record));
