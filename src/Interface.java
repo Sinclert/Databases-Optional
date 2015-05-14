@@ -24,6 +24,11 @@ public class Interface {
     Serial serial = new Serial();
     FileMan fileman = new FileMan();
 
+    public static void main(String[] args) throws IOException {
+        Interface inter = new Interface();
+        inter.iface();
+    }
+
     public Logical_Record input(int references_num, Logical_Record record) throws IOException {
 
         String input;
