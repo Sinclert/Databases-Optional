@@ -154,11 +154,6 @@ public class Serial {
         f.writeBytes(block);
     }
 
-     // TODO FUNCION HASH QUE DEVUELVE UN INT. CADA HASH DIFERENTE EN UN CUBO DIFERENTE
-     // CONTADOR DE BUCKET INICIALIZADO AL PRIMER VALOR OVERFLOWED. CALCULA LA TRANSFORMADA,
-     // Y SI NO WRITEINBUCKET EN EL ADRESS, ENTONCES BUCKETCOUNT ++
-     // VER PASOS.
-
     /**
      * Provides current number of blocks in the file (n).
      */

@@ -119,13 +119,11 @@ public class Interface {
                     "\n 8. Exit");
 
             int option = Integer.parseInt(sc.next().charAt(0) + "");
-            //int option = 0;
-            //if(sc.hasNextInt()) option  = sc.nextInt();
             switch (option) {
 
                 // Case in which we open a file
                 case 1:
-                    fileman.open_archive("newCoffea.sql");
+                    System.out.println(fileman.open_archive("newCoffea.sql"));
                     break;
 
                 // Case in which we insert a record
@@ -225,7 +223,7 @@ public class Interface {
 
                 // Case in which we open a file
                 case 7:
-                    fileman.close_archive();
+                    System.out.println(fileman.close_archive("newCoffea.sql"));
                     break;
 
                 // Case in which we exit the menu

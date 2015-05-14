@@ -9,6 +9,7 @@ public class FileMan {
     FileChannel fc;
     Serial oldSerial = new Serial();
     Serial newSerial = new Serial();
+    boolean fileOpened = false;
 
     public FileMan() {
         buffer = new RABuffer();
@@ -18,16 +19,23 @@ public class FileMan {
     public String open_archive(String fileName) throws IOException {
         if (fileName.equalsIgnoreCase("coffea.sql")) oldSerial.openFile(fileName, "rw");
         else newSerial.openFile(fileName, "rw"); //if(fileName.equalsIgnoreCase("newCoffea.sql"))
+        fileOpened = true;
         return "File system " + fileName + " opened";
     }
 
     /* Closes all datafiles - Also invoked when exiting */
-    public String close_archive() throws IOException {
+    public String close_archive(String fileName) throws IOException {
         if (fc != null) {
             buffer.releasePagePolicy(fc, buffer.getNumberOfPages());
             buffer.close(fc);
         }
-        return "File system closed";
+        if(fileOpened){
+            if (fileName.equalsIgnoreCase("coffea.sql")) oldSerial.closeFile();
+            else newSerial.closeFile();
+            fileOpened = false;
+            return "File system " + fileName + " closed";
+        }
+        else return "File not opened";
     }
 
     /* Saves all modified pages from the buffeer into the disk (flush) */
@@ -38,18 +46,8 @@ public class FileMan {
 
     /* Inserts a record in currently open NEW archive */
     public String insert(Logical_Record new_record) throws IOException {
-        //newSerial.openFile("newCoffea.sql", "rw");
         open_archive("newCoffea.sql");
-        //Logical_Record record;
-
-        //record = newSerial.read_record();
-        //if (toString(record).contains("EOF")) {
         newSerial.insertHash(toString(new_record));
-
-        //newSerial.writeBlock("EOF");
-        //break;
-        //}
-
         return ("New record inserted");
     }
 
