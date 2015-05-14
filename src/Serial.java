@@ -62,8 +62,13 @@ public class Serial {
      */
     public String read_string(int n) throws IOException {
         String readed_string = "";
+        char c;
+        int spaces = 0;
         for (int i = 0; i < n; i++) {
-            readed_string = readed_string + read_byte();
+            c = read_byte();
+            if(c == ' ') spaces++;
+            if(c != ' ') spaces--;
+            if(spaces<2)readed_string = readed_string + c;
         }
         return readed_string;
     }
@@ -85,7 +90,6 @@ public class Serial {
     public Logical_Record read_record() throws IOException {
 
         Logical_Record record = new Logical_Record();
-
         record.setName(read_string(50));
         record.setCaffea(read_string(9));
         record.setVarietal(read_string(28));

@@ -75,4 +75,24 @@ public class Test {
         Interface inter = new Interface();
         inter.iface();
     }
+
+    public static String toString(Logical_Record record) {
+        String references = "";
+        boolean write;
+        for (int i = 0; i < 15; i++) {
+            write = true;
+            for (int j = 0; j < 7; j++) {
+                if(record.getRefferences(j, i) == null) write = false;
+            }
+            if (!write) break;
+
+            references += record.getBarCodes()[i] + record.getFormats()[i] + record.getPackagings()[i] + record.getPrices()[i]
+                    + record.getMin_stocks()[i] + record.getStocks()[i] + record.getMax_stocks()[i];
+        }
+
+        return record.getName() + record.getCaffea()
+                + record.getVarietal() + record.getOrigin()
+                + record.getRoasting() + record.getProcess()
+                + references;
+    }
 }
