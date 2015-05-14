@@ -203,7 +203,7 @@ public class Interface {
                     if (input.length() > 0 && input.length() <= 7) {
                         buf_in.setProcess(input);
                         buf_in.setFields(5, true);
-                    }
+                    }/**/
 
                     output(fileman.search("coffea.sql", buf_in, times));
                     break;

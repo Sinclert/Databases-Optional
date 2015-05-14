@@ -18,7 +18,6 @@ public class FileMan {
     public String open_archive(String fileName) throws IOException {
         if(fileName.equalsIgnoreCase("coffea.sql")) oldSerial.openFile(fileName, "rw");
         else newSerial.openFile(fileName, "rw"); //if(fileName.equalsIgnoreCase("newCoffea.sql"))
-        //buffer.openFile(fileName, "rw");
         return "File system " + fileName + " opened";
     }
 
@@ -57,14 +56,16 @@ public class FileMan {
         open_archive(old_filename);
         open_archive("newCoffea.sql");
         Logical_Record record;
+        int records = 0;
 
         while (true){
             record = oldSerial.read_record();
-            if(toString(record).contains("#")) {
+            if(records > 1200) {
                 newSerial.writeBlock("EOF");
                 return ("Import " + old_filename + " method finished.");
             }
             newSerial.writeBlock(toString(record));
+            records++;
         }
     }
 

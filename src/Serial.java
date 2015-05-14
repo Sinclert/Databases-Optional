@@ -66,11 +66,13 @@ public class Serial {
         int spaces = 0;
         for (int i = 0; i < n; i++) {
             c = read_byte();
-            if(c == ' ') spaces++;
-            if(c != ' ') spaces--;
-            if(spaces<2)readed_string = readed_string + c;
+            //if(c == ' ') spaces++;
+            //if(c != ' ') spaces--;
+            //if(spaces<2)
+            readed_string = readed_string + c;
+            //else break;
         }
-        return readed_string;
+        return readed_string.trim();
     }
 
     public char read_byte() throws IOException {
@@ -80,7 +82,7 @@ public class Serial {
             cnt_byte = 0;
             reset = true;
         }
-        if(cnt_byte == 0 && !reset) block = readBlock();
+        if (cnt_byte == 0 && !reset) block = readBlock();
         return (char) block[cnt_byte++];
     }
 
@@ -97,12 +99,8 @@ public class Serial {
         record.setRoasting(read_string(7));
         record.setProcess(read_string(7));
 
-        String barCode;
         for (int j = 0; j < 15; j++) {
-            barCode = read_string(15);
-            if (barCode.contains(" ") || record.getBarCodes()[j] == null) break;
-
-            record.setBarCodes(j, barCode);
+            record.setBarCodes(j, read_string(15));
             record.setFormats(j, read_string(12));
             record.setPackagings(j, read_string(15));
             record.setPrices(j, read_string(11));
@@ -162,6 +160,18 @@ public class Serial {
     public void writeBlock(String block) throws IOException {
         f.writeBytes(block);
     }
+    /**
+     // TODO WRITE IN BUCKET BOOLEAN METHOD
+     // 1. READS FFP
+     // SI NO CABE, DEVUELVE FALSE.
+     // SI CABE, LLAMA A ESCRIBIR A PARTIR DE FFP
+     // ACTUALIZA FFP. RECIBE NUMERO DE CUBO Y STRING (PARA CALCULAR LA LENGTH
+     //
+     // TODO FUNCION HASH QUE DEVUELVE UN INT. CADA HASH DIFERENTE EN UN CUBO DIFERENTE
+     // CONTADOR DE BUCKET INICIALIZADO AL PRIMER VALOR OVERFLOWED. CALCULA LA TRANSFORMADA,
+     // Y SI NO WRITEINBUCKET EN EL ADRESS, ENTONCES BUCKETCOUNT ++
+     // VER PASOS.
+     */
 
     /**
      * Provides current number of blocks in the file (n).
