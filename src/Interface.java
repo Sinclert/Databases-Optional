@@ -20,8 +20,7 @@ import java.util.Scanner;
  */
 
 public class Interface {
-
-    Serial serial = new Serial();
+    
     FileMan fileman = new FileMan();
 
     public static void main(String[] args) throws IOException {
@@ -105,10 +104,10 @@ public class Interface {
         int references_num = 1, times = 1;
         boolean exit = false;
         BufferRecord buf_in = new BufferRecord();
-        Scanner sc;
+        Scanner sc = new Scanner(System.in);
+
 
         while (!exit) {
-            sc = new Scanner(System.in);
             System.out.println("Enter one of the following options:" +
                     "\n 1. Open Archive" +
                     "\n 2. Insert" +
@@ -144,8 +143,7 @@ public class Interface {
 
                     Logical_Record new_record = new Logical_Record();
                     new_record = input(references_num, new_record);
-                    System.out.println(fileman.toString(new_record));
-                    fileman.insert(new_record);
+                    System.out.println(fileman.insert(new_record));
                     break;
 
                 // Case in which we import from another file
@@ -240,7 +238,8 @@ public class Interface {
                     System.out.println("Wrong option, please select a correct option");
                     break;
             }
-            sc.close();
+
         }
+        sc.close();
     }
 }

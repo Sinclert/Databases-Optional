@@ -14,7 +14,7 @@ public class Serial {
     private long filesize;
     public static final int BLOCKSIZE = 1022;
     byte[] ffps = new byte[2];
-    int cnt_byte = 0;
+    int cnt_byte = 0, cnt_bucket = 0;
     byte[] block = new byte[BLOCKSIZE];
 
     /**
@@ -63,14 +63,10 @@ public class Serial {
     public String read_string(int n) throws IOException {
         String readed_string = "";
         char c;
-        int spaces = 0;
+
         for (int i = 0; i < n; i++) {
             c = read_byte();
-            //if(c == ' ') spaces++;
-            //if(c != ' ') spaces--;
-            //if(spaces<2)
             readed_string = readed_string + c;
-            //else break;
         }
         return readed_string.trim();
     }
@@ -119,36 +115,33 @@ public class Serial {
         f.seek(0);
     }
 
-    /**
-     * It writes bytes in the new file
-     *
-     * @param string
-     * @param pos
-     * @param b
-     * @throws IOException
-     */
-    public void writeBlock_byte(String string, int pos, char b) throws IOException {
-        if (pos < BLOCKSIZE) {
-            byte[] block = new byte[string.length()];
-            for (int i = 0; i < string.length(); i++) {
-                block[i] = (byte) string.toCharArray()[i];
-            }
-            f.write(block, pos, b);
+
+    public boolean writeBucket(int bucket, String record) throws IOException {
+        cnt_byte = readFFP(bucket);
+        if(1022-cnt_byte < record.length()) {
+            cnt_bucket++;
+            return false;
+        }
+        else {
+            writeBlock(record);
+            writeFFP(bucket, cnt_byte+record.length());
+            return true;
         }
     }
 
-    /**
-     * It writes strings in the new file
-     *
-     * @param block
-     * @param pos
-     * @param s
-     * @throws IOException
-     */
-    public void writeBlock_string(String block, int pos, String s) throws IOException {
-        for (int i = 0; i < s.length(); i++) {
-            writeBlock_byte(block, pos, s.charAt(i));
+    public boolean insertHash(String record) throws IOException {
+        if(record.equalsIgnoreCase("")){
+            cnt_bucket++;
+            return false;
         }
+        int sum = 0;
+        char [] chars = record.toCharArray();
+        for (int i = 0; i < record.length(); i++) {
+            sum = sum + (byte) chars[i];
+        }
+        sum = sum % 750;
+        writeBucket(sum, record);
+        return true;
     }
 
     /**
@@ -160,18 +153,11 @@ public class Serial {
     public void writeBlock(String block) throws IOException {
         f.writeBytes(block);
     }
-    /**
-     // TODO WRITE IN BUCKET BOOLEAN METHOD
-     // 1. READS FFP
-     // SI NO CABE, DEVUELVE FALSE.
-     // SI CABE, LLAMA A ESCRIBIR A PARTIR DE FFP
-     // ACTUALIZA FFP. RECIBE NUMERO DE CUBO Y STRING (PARA CALCULAR LA LENGTH
-     //
+
      // TODO FUNCION HASH QUE DEVUELVE UN INT. CADA HASH DIFERENTE EN UN CUBO DIFERENTE
      // CONTADOR DE BUCKET INICIALIZADO AL PRIMER VALOR OVERFLOWED. CALCULA LA TRANSFORMADA,
      // Y SI NO WRITEINBUCKET EN EL ADRESS, ENTONCES BUCKETCOUNT ++
      // VER PASOS.
-     */
 
     /**
      * Provides current number of blocks in the file (n).
@@ -189,21 +175,27 @@ public class Serial {
         return bucket;
     }
 
-    public int writeFFP(int bucket, int FFP) throws IOException {
-        return bucket;
+    public void writeFFP(int bucket, int FFP) throws IOException {
+        byte[] block = new byte[BLOCKSIZE];
+        for (int i = 0; i < bucket; i++) {
+            block = readBlock();
+        }
+        byte ffps[] = intToFFP(FFP);
+        block[1022] = ffps[0];
+        block[1023] = ffps[1];
     }
 
     public int FFPtoInt(byte[] ffps) {
         int[] array = new int[10];
 
         int ffps0 = (int) ffps[0] + 128;
-        for (int i = 1; i >= 0; i--) {
+        for (int i = 2; i >= 0; i--) {
             array[i] = ffps0 % 2;
             ffps0 = ffps0 / 2;
         }
 
         int ffps1 = (int) ffps[1] + 128;
-        for (int i = 9; i > 1; i--) {
+        for (int i = 9; i > 2; i--) {
             array[i] = ffps1 % 2;
             ffps1 = ffps1 / 2;
         }
@@ -211,38 +203,31 @@ public class Serial {
          * 0 1 2 3 4 5 6 7 8 9
          * 0 - 128 - 256
          * -128 - 0 - 128
-         * sumamos 128 para ajustar la escala hasta 256
+         * we sum 128 to adjust the scale
          */
         int sum = 0;
         for (int i = 9, j = 0; i >= 0; i--, j++) {
-            if (i != 2) sum += array[i] * (Math.pow(2, j));
-            else j--;
+            sum += array[i] * (Math.pow(2, j));
         }
         return sum;
     }
 
     public byte[] intToFFP(int number) {
-        String inttoS = Integer.toBinaryString(number);
-        int[] array = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        String intToS = Integer.toBinaryString(number);
+        int[] array = {0,0,0,0,0,0,0,0,0,0};
+        for (int i = 0, j=intToS.length()-1, k = 9; i < intToS.length(); i++, j--, k--) {
+            array[k] = Integer.parseInt("" + intToS.charAt(j));
+        }
 
-        for (int i = 0, j = inttoS.length() - 1, k = 9; i < inttoS.length(); i++, j--, k--) {
-            if (k != 2) array[k] = Integer.parseInt("" + inttoS.charAt(j));
-            else {
-                i--;
-                j++;
-            }    //intentamos replicar el array anterior, donde concatenamos los dos bytes
+        int ffps1 = 0;
+        for (int i = 2, j = 0; i >= 0; i--, j++) {
+            ffps1 += array[i] * (Math.pow(2, j));
         }
-        array[2] = 1;           //problemas con el signo, mas o menos
-        int ffps21 = 0;
-        for (int i = 1, j = 0; i >= 0; i--, j++) {
-            ffps21 += array[i] * (Math.pow(2, j));
-        }
-        //ffps21 -= 128;
-        int ffps22 = 0;
+
+        int ffps2 = 0;
         for (int i = 9, j = 0; i > 2; i--, j++) {
-            ffps22 += array[i] * (Math.pow(2, j));
+            ffps2 += array[i] * (Math.pow(2, j));
         }
-        //if(ffps22 < 128)ffps22 -= 128;
-        return new byte[]{(byte) ffps21, (byte) ffps22};
+        return new byte[]{(byte) ffps1, (byte) ffps2};
     }
 }

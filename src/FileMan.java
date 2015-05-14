@@ -44,7 +44,8 @@ public class FileMan {
 
         //record = newSerial.read_record();
         //if (toString(record).contains("EOF")) {
-        newSerial.writeBlock(toString(new_record));
+        newSerial.insertHash(toString(new_record));
+
         //newSerial.writeBlock("EOF");
         //break;
         //}
@@ -67,7 +68,7 @@ public class FileMan {
                 newSerial.writeBlock("EOF");
                 break;
             }
-            newSerial.writeBlock(toString(record));
+            newSerial.insertHash(toString(record));
             records++;
         }
         return ("Import " + old_filename + " method finished.");
