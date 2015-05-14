@@ -12,10 +12,10 @@ public class Serial {
 
     private RandomAccessFile f;
     private long filesize;
-    public static final int BLOCKSIZE = 1024;
+    public static final int BLOCKSIZE = 1022;
     byte[] ffps = new byte[2];
     int cnt_byte = 0, cnt_bucket = 0;
-    //byte[] block = new byte[BLOCKSIZE];
+    byte[] block = new byte[BLOCKSIZE];
 
     /**
      * Opens the file in the specified mode, pointing to first block.
@@ -52,7 +52,7 @@ public class Serial {
      * The file must be open in read mode (either "R" or "RW").<br/>
      */
     public byte[] readBlock() throws IOException {
-        byte[] block = new byte[BLOCKSIZE];
+        block = new byte[BLOCKSIZE];
         f.read(block);
         return block;
     }
@@ -67,7 +67,6 @@ public class Serial {
     }
 
     public char read_byte() throws IOException {
-        byte[] block = new byte[BLOCKSIZE];
         boolean reset = false;
         if (cnt_byte > 1021) {
             block = readBlock();
@@ -120,7 +119,7 @@ public class Serial {
      */
     public void writeBlock_byte(String string, int pos, char b) throws IOException {
         if (pos < BLOCKSIZE) {
-            byte[] block = new byte[string.length()];
+            block = new byte[string.length()];
             for (int i = 0; i < string.length(); i++) {
                 block[i] = (byte) string.toCharArray()[i];
             }
