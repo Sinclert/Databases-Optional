@@ -16,7 +16,7 @@ public class FileMan {
 
     /* Open the datafile identified be the given filename */
     public String open_archive(String fileName) throws IOException {
-        if(fileName.equalsIgnoreCase("coffea.sql")) oldSerial.openFile(fileName, "rw");
+        if (fileName.equalsIgnoreCase("coffea.sql")) oldSerial.openFile(fileName, "rw");
         else newSerial.openFile(fileName, "rw"); //if(fileName.equalsIgnoreCase("newCoffea.sql"))
         return "File system " + fileName + " opened";
     }
@@ -38,15 +38,18 @@ public class FileMan {
 
     /* Inserts a record in currently open NEW archive */
     public String insert(Logical_Record new_record) throws IOException {
-        newSerial.openFile("newCoffea.sql", "rw");
-        while (true){
-            new_record = newSerial.read_record();
-            if(toString(new_record).contains("EOF")) {
-                newSerial.writeBlock("EOF");
-                break;
-            }
-        }
-        return ("Inserting the new record");
+        //newSerial.openFile("newCoffea.sql", "rw");
+        open_archive("newCoffea.sql");
+        //Logical_Record record;
+
+        //record = newSerial.read_record();
+        //if (toString(record).contains("EOF")) {
+        newSerial.writeBlock(toString(new_record));
+        //newSerial.writeBlock("EOF");
+        //break;
+        //}
+
+        return ("New record inserted");
     }
 
     /* Reads a serial file (old design) and inserts evey record read into the new datafile
@@ -58,15 +61,16 @@ public class FileMan {
         Logical_Record record;
         int records = 0;
 
-        while (true){
+        while (true) {
             record = oldSerial.read_record();
-            if(records > 1200) {
+            if (records > 1200) {
                 newSerial.writeBlock("EOF");
-                return ("Import " + old_filename + " method finished.");
+                break;
             }
             newSerial.writeBlock(toString(record));
             records++;
         }
+        return ("Import " + old_filename + " method finished.");
     }
 
     /**
@@ -88,8 +92,7 @@ public class FileMan {
             for (int i = 0; i < 6; i++) {
                 if (buf_in.getFields(i) && buf_out.getAttribute(i).contains(buf_in.getAttribute(i))) {
                     counterF++;
-                }
-                else if (buf_in.getFields(i) && !buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) continue;
+                } else if (buf_in.getFields(i) && !buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) continue;
             }
 
             if (buf_in.countFields() == counterF) counterT++;
@@ -114,7 +117,7 @@ public class FileMan {
         for (int i = 0; i < 15; i++) {
             write = true;
             for (int j = 0; j < 7; j++) {
-                if(record.getRefferences(j, i) == null) write = false;
+                if (record.getRefferences(j, i) == null) write = false;
             }
             if (!write) break;
 

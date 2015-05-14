@@ -105,9 +105,10 @@ public class Interface {
         int references_num = 1, times = 1;
         boolean exit = false;
         BufferRecord buf_in = new BufferRecord();
-        Scanner sc = new Scanner(System.in);
+        Scanner sc;
 
         while (!exit) {
+            sc = new Scanner(System.in);
             System.out.println("Enter one of the following options:" +
                     "\n 1. Open Archive" +
                     "\n 2. Insert" +
@@ -119,6 +120,8 @@ public class Interface {
                     "\n 8. Exit");
 
             int option = Integer.parseInt(sc.next().charAt(0) + "");
+            //int option = 0;
+            //if(sc.hasNextInt()) option  = sc.nextInt();
             switch (option) {
 
                 // Case in which we open a file
@@ -141,7 +144,7 @@ public class Interface {
 
                     Logical_Record new_record = new Logical_Record();
                     new_record = input(references_num, new_record);
-
+                    System.out.println(fileman.toString(new_record));
                     fileman.insert(new_record);
                     break;
 
@@ -237,8 +240,7 @@ public class Interface {
                     System.out.println("Wrong option, please select a correct option");
                     break;
             }
+            sc.close();
         }
-
-        sc.close();
     }
 }
