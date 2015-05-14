@@ -39,7 +39,9 @@ public class FileMan {
     }
 
     /* Inserts a record in currently open NEW archive */
-    public String insert(BufferRecord buf_in) {
+    public String insert(Logical_Record new_record) throws IOException {
+        System.out.printf(toString(new_record));
+        newSerial.writeBlock_string(toString(new_record));
         return ("Inserting into new archive; method finished (not implemented yet)");
     }
 
@@ -54,14 +56,6 @@ public class FileMan {
         while (true){
             record = oldSerial.read_record();
             if(toString(record).contains("#")) {
-                System.out.println(record.getName());
-                System.out.println(record.getCaffea());
-                System.out.println(record.getVarietal());
-                System.out.println(record.getOrigin());
-                System.out.println(record.getRoasting());
-                System.out.println(record.getProcess());
-
-                System.out.println(toString(record));
                 return ("Import " + old_filename + " method finished.");
             }
             newSerial.writeBlock(toString(record));
@@ -82,14 +76,13 @@ public class FileMan {
         open_archive(archive);
         int counterF = 0, counterT = 0;
 
-        // TODO What should we do with archive?
-
         while (true) {
             buf_out = oldSerial.read_record();
             for (int i = 0; i < 6; i++) {
-                if (buf_in.getFields(i) && buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) {
+                if (buf_in.getFields(i) && buf_out.getAttribute(i).contains(buf_in.getAttribute(i))) {
                     counterF++;
-                } else if (buf_in.getFields(i) && !buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) break;
+                }
+                else if (buf_in.getFields(i) && !buf_out.getAttribute(i).equals(buf_in.getAttribute(i))) continue;
             }
 
             if (buf_in.countFields() == counterF) counterT++;
@@ -112,13 +105,12 @@ public class FileMan {
         String references = "";
         boolean write;
         for (int i = 0; i < 15; i++) {
-            /*
             write = true;
             for (int j = 0; j < 7; j++) {
                 if(record.getRefferences(j, i) == null) write = false;
             }
             if (!write) break;
-            */
+
             references += record.getBarCodes()[i] + record.getFormats()[i] + record.getPackagings()[i] + record.getPrices()[i]
                     + record.getMin_stocks()[i] + record.getStocks()[i] + record.getMax_stocks()[i];
         }
@@ -126,7 +118,7 @@ public class FileMan {
         return record.getName() + record.getCaffea()
                 + record.getVarietal() + record.getOrigin()
                 + record.getRoasting() + record.getProcess()
-                + references + "\n";
+                + references;
     }
 
     private Logical_Record toLogicalRecord(String string) throws IOException {

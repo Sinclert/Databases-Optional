@@ -90,7 +90,9 @@ public class Interface {
     }
 
     public void output(Logical_Record record) throws IOException {
-        System.out.println(fileman.toString(record));
+       if (fileman.toString(record).length() >= 168){
+            System.out.println(fileman.toString(record));
+        }
     }
 
     public void iface() throws IOException {
@@ -133,9 +135,9 @@ public class Interface {
                     }
 
                     Logical_Record new_record = new Logical_Record();
-                    input(references_num, new_record);
+                    new_record = input(references_num, new_record);
 
-                    // TODO escribir el registro en el archivo
+                    fileman.insert(new_record);
                     break;
 
                 // Case in which we import from another file
