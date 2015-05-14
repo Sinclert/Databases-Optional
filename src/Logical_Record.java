@@ -70,6 +70,7 @@ public class Logical_Record {
     }
 
     public void setBarCodes(int i, String barCode) {
+        //if(barCode.charAt(0)!=' ')
         this.barCodes[i] = barCode;
     }
 
@@ -78,6 +79,7 @@ public class Logical_Record {
     }
 
     public void setFormats(int i, String format) {
+        //if(format.charAt(0)!=' ')
         this.formats[i] = format;
     }
 
@@ -86,6 +88,7 @@ public class Logical_Record {
     }
 
     public void setPackagings(int i, String packagings) {
+        //if(packagings.charAt(0)!=' ')
         this.packagings[i] = packagings;
     }
 
@@ -94,6 +97,7 @@ public class Logical_Record {
     }
 
     public void setPrices(int i, String price) {
+        //if(price.charAt(0)!=' ')
         this.prices[i] = price;
     }
 
@@ -102,6 +106,7 @@ public class Logical_Record {
     }
 
     public void setMin_stocks(int i, String min_stock) {
+        //if(min_stock.charAt(0)!=' ')
         this.min_stocks[i] = min_stock;
     }
 
@@ -110,6 +115,7 @@ public class Logical_Record {
     }
 
     public void setStocks(int i, String stock) {
+        //if(stock.charAt(0)!=' ')
         this.stocks[i] = stock;
     }
 
@@ -118,6 +124,7 @@ public class Logical_Record {
     }
 
     public void setMax_stocks(int i, String max_stock) {
+        //if(max_stock.charAt(0)!=' ')
         this.max_stocks[i] = max_stock;
     }
 
