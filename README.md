@@ -20,8 +20,7 @@
 
 3. Interface
     * input
-    * output (?) metodos auxiliares
-    * output (LR record)??
+    * output
     * iface
         * Open Archive
         * Insert
@@ -34,12 +33,12 @@
 
 4. LogicalRecord = producto.
     * Atributos, getters y setters.
-    * set/getAttribute (i, String att) llama a super.set/get x
+    * set/getAttribute (i, String att)
 
 5. RABuffer
-    * RAB (int numOfPages int Blocksize) llama a Buffer(NOP, BS)
-    * int releasePagePolicy (FC, int blocknum) ??? return random*NOP.
-    * referencedPage(int i) …??? Inutil?????
+    * RAB (int numOfPages int Blocksize)
+    * int releasePagePolicy (FC, int blocknum)
+    * referencedPage(int i)
 
 6. Serial
     * openFile(String file, mode)
@@ -49,6 +48,9 @@
     * readbyte()
     * LR readRecord()
     * reset()
+    * insertHash()
     * writeBlock_byte, String, writeBlock()
+    * write_bucket()
     * fileSize()
-
+    * FFPToInt()
+    * intToFFP()
